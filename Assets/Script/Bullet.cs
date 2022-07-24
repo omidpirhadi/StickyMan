@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
         if(collision.collider.tag == "Body" || collision.collider.tag == "Wall")
         {
             Destroy(this.gameObject, 0.0f);
-            Debug.Log("A");
+           // Debug.Log("A");
         }
     }
 }

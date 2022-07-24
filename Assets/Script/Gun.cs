@@ -10,12 +10,12 @@ public class Gun : MonoBehaviour
     public ForceMode forceMode;
     private new Rigidbody rigidbody;
 
-    public void Fire()
+    public void Fire(Vector3 force , float power)
     {
         
         var b = Instantiate(Bullet, BulletPlace.position, Quaternion.identity);
 
-        b.AddForce(transform.up * PowerFire, forceMode);
+        b.AddForce(force * (power * PowerFire), forceMode);
         
     }
 }
