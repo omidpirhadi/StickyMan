@@ -16,6 +16,7 @@ public class Body : MonoBehaviour
     private void OnChangeSetting()
     {
         rigidbody.mass = settingUI.massbody;
+        rigidbody.drag = settingUI.dragbody;
     }
 
 

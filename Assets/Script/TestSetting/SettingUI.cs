@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class SettingUI : MonoBehaviour
 {
     public InputField MassBody;
+    public InputField DragBody;
     public InputField PowerRange;
     public InputField PowerGun;
     public InputField BounceWall;
@@ -20,7 +21,9 @@ public class SettingUI : MonoBehaviour
     public Button Reset_btn;
     public Button CloseSetting;
 
+    
     public float massbody;
+    public float dragbody;
     public float powerrange;
     public float powergun;
     
@@ -36,6 +39,11 @@ public class SettingUI : MonoBehaviour
                 massbody = Convert.ToSingle(MassBody.text);
             else
                 massbody = 1;
+
+            if (DragBody.text.Length > 0)
+                dragbody = Convert.ToSingle(DragBody.text);
+            else
+                dragbody = 0;
 
             if (PowerRange.text.Length > 0)
                 powerrange = Convert.ToSingle(PowerRange.text);
