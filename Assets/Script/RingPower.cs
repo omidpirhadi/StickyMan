@@ -8,15 +8,30 @@ public class RingPower : MonoBehaviour
     public Disc CirclePower;
     public Line LineDirection;
 
-    [ProgressBar(0,100,Segmented = true)]
+    
+    public float MaxScaleRange;
     public float PowerRange;
     public Vector3 DirectionForce;
+
+    private SettingUI settingUI;
+    public void Start()
+    {
+        settingUI = FindObjectOfType<SettingUI>();
+        settingUI.OnChangeSetting += OnChangeSetting;
+    }
+    private void OnChangeSetting()
+    {
+       PowerRange =  settingUI.powerrange;
+    }
+
     [Button("SetRange", ButtonSizes.Medium)]
     public void SetRange(float r)
     {
-        PowerRange = r;
-        CirclePower.Radius = r;
-        LineDirection.End = new Vector3(r, 0, 0);
+        
+        var radius = Mathf.Clamp(r, 0, MaxScaleRange);
+        PowerRange = r / MaxScaleRange;
+        CirclePower.Radius = radius;
+        LineDirection.End = new Vector3(radius, 0, 0);
     }
    
     public void SetPosition(Vector3 Pos)
