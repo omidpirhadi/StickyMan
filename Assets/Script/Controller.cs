@@ -11,61 +11,28 @@ public class Controller : MonoBehaviour
 
     public Transform SpwanPlaceHume;
     public LayerMask GunMask;
-
+    public float SensivityMoveGun = 0.1f;
     public float MinYCamera;
    [SerializeField] private GameObject humen;
     private Vector3 firstTouch;
     private Vector3 secondTouch;
 
+    private Vector3 current_touch , last_touch;
     private Ray ray;
     private RaycastHit hit;
     private bool selecetdGun;
     void Start()
     {
-       // ring = GetComponent<RingPower>();
+      
     }
 
     
     void Update()
     {
-       /* if (humen.transform.position.y < MinYCamera)
-        {
-            Camera.main.GetComponent<PositionConstraint>().constraintActive = false;
-        }
-        else
-        {
-            Camera.main.GetComponent<PositionConstraint>().constraintActive = true;
-        }*/
+
         Touch2();
     }
-    /* public Transform point;
-     private Vector3 PointClick;
-     private void Touch()
-     {
-         if (Input.touchCount > 0)
-         {
 
-
-             var touch = Input.GetTouch(0);
-
-             if (touch.phase == TouchPhase.Began)
-             {
-
-             }
-             else if (touch.phase == TouchPhase.Moved)
-             {
-                 PointClick = Camera.main.ScreenToWorldPoint(touch.position);
-                 PointClick.z = 0;
-                 point.transform.position = PointClick;
-                 AimGun(PointClick);
-             }
-             else if (touch.phase == TouchPhase.Ended)
-             {
-                 Gun.Fire();
-             }
-         }
-
-     }*/
     private void Touch2()
     {
         if (Input.touchCount > 0)
@@ -86,34 +53,49 @@ public class Controller : MonoBehaviour
                         temp_pos.z = 0;
                         firstTouch = temp_pos;
                         ring.SetPosition(temp_pos);
-                        this.Gun = hit.transform.GetComponentInParent<Gun>();
+                      //  this.Gun = hit.transform.GetComponentInParent<Gun>();
                         selecetdGun = true;
                         Time.timeScale = 0.2f;
                     }
                 }
+                else
+                {
+                    firstTouch = Camera.main.ScreenToWorldPoint(touch.position);
+                    firstTouch.z = 0;
+                }
             }
             else if (touch.phase == TouchPhase.Moved)
             {
+                secondTouch = Camera.main.ScreenToWorldPoint(touch.position);
+                secondTouch.z = 0;
+                current_touch = secondTouch;
+
                 if (selecetdGun)
                 {
-                    secondTouch = Camera.main.ScreenToWorldPoint(touch.position);
-                    secondTouch.z = 0;
+
+
                     var range = Vector3.Distance(firstTouch, secondTouch);
                     ring.SetRange(range);
                     ring.SetRotation(secondTouch);
                     RotateGunToAim(secondTouch);
                 }
+                else
+                {
+                    Gun.ChangePosition(current_touch, last_touch, SensivityMoveGun);
+
+                }
+                last_touch = current_touch;
             }
             else if (touch.phase == TouchPhase.Ended)
             {
                 if (selecetdGun)
                 {
                     var f = ring.CalculateDirectionForce();
-                    //  Debug.Log(f);
+
                     Gun.Fire(f, ring.PowerRange);
                     ring.Reset();
                     selecetdGun = false;
-                    Gun = null;
+                   // Gun = null;
                     Time.timeScale = 1.0f;
                 }
             }

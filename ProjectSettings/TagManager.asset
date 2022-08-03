@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Body
   - Wall
+  - koala
+  - Ragdoll
+  - ammobox
   layers:
   - Default
   - TransparentFX
