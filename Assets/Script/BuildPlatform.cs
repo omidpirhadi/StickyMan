@@ -57,9 +57,9 @@ public class BuildPlatform : MonoBehaviour
         for (int i = 0; i < h; i++)
         {
             int rand_pos = UnityEngine.Random.Range(0, 3);
-            pos_platform = new Vector3(3.14f, Levels[CurrentLevel].Min, 0.0f);
-            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].Min, Levels[CurrentLevel].Max);
-            if (pos_platform.y < Levels[CurrentLevel].Max)
+            pos_platform = new Vector3(3.14f, Levels[CurrentLevel].PadingDown, 0.0f);
+            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h- Levels[CurrentLevel].PadingUp);
+            if (pos_platform.y <h- Levels[CurrentLevel].PadingUp)
             {
                 if (rand_pos == 0)
                 {
@@ -100,8 +100,8 @@ public class BuildPlatform : MonoBehaviour
         for (int i = 0; i < h; i++)
         {
             int rand_pos = UnityEngine.Random.Range(0, 2);
-            pos_platform = new Vector3(0f, Levels[CurrentLevel].Min, 0.0f);
-            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].Min, Levels[CurrentLevel].Max);
+            pos_platform = new Vector3(0f, Levels[CurrentLevel].PadingDown, 0.0f);
+            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h-Levels[CurrentLevel].PadingUp);
             if (rand_pos == 0)
             {
                 pos_platform = new Vector3(0, pos_platform.y, 0.0f);
@@ -111,7 +111,7 @@ public class BuildPlatform : MonoBehaviour
                 pos_platform = new Vector3(0, pos_platform.y, 0.0f);
             }
             temp_dis += Levels[CurrentLevel].DistanceAmmoBoxEachOther;
-            if (pos_platform.y < Levels[CurrentLevel].Max)
+            if (pos_platform.y < h-Levels[CurrentLevel].PadingUp)
                 Instantiate(Levels[CurrentLevel].AmmoBox_prefab, pos_platform, Levels[CurrentLevel].AmmoBox_prefab.transform.rotation, envirment);
         }
     }
@@ -120,21 +120,31 @@ public class BuildPlatform : MonoBehaviour
 [Serializable]
 public struct LEVEL
 {
+    [BoxGroup("Wall Settings")]
     public int Height;
+    [BoxGroup("Wall Settings")]
     public int DistansWallEcheOther;
-
+    [BoxGroup("Wall Settings")]
     public PlatformWall Wall_prefab;
+    [BoxGroup("Plastform Settings")]
     public float DistancePlatformEachOther;
-    [BoxGroup("StartAndEndPositionY")]
-    public float Min;
-    [BoxGroup("StartAndEndPositionY")]
-    public float Max;
-    public int PlatformCount;
+    [BoxGroup("Plastform Settings")]
+    [BoxGroup("Plastform Settings/Padding")]
+    public float PadingDown;
+    [BoxGroup("Plastform Settings")]
+    [BoxGroup("Plastform Settings/Padding")]
+    public float PadingUp;
+    [BoxGroup("Plastform Settings")]
     public List<Platform> LeftPlatform;
+    [BoxGroup("Plastform Settings")]
     public List<Platform> MedillePlatform;
+    [BoxGroup("Plastform Settings")]
     public List<Platform> RightPlatform;
+    [BoxGroup("AmmoBox Settings")]
     public GameObject AmmoBox_prefab;
+    [BoxGroup("AmmoBox Settings")]
     public float DistanceAmmoBoxEachOther;
+    [BoxGroup("AmmoBox Settings")]
     public GameObject EndLine_prefab;
 
 }
