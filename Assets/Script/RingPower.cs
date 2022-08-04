@@ -29,7 +29,7 @@ public class RingPower : MonoBehaviour
     {
         
         var radius = Mathf.Clamp(r, 0, MaxScaleRange);
-        PowerRange = r / MaxScaleRange;
+        PowerRange = Mathf.Clamp(r / MaxScaleRange, 0, 1); 
         CirclePower.Radius = radius;
         LineDirection.End = new Vector3(radius, 0, 0);
     }
