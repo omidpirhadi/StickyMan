@@ -77,6 +77,7 @@ public class Controller : MonoBehaviour
                     var range = Vector3.Distance(firstTouch, secondTouch);
                     ring.SetRange(range);
                     ring.SetRotation(secondTouch);
+
                     RotateGunToAim(secondTouch);
                 }
                 else

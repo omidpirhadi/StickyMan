@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
     public void Ammo(int a)
     {
         AmmoCount += a;
-        if (AmmoCount >= 0 && AmmoCount <= MaxCapacityAmmo)
+        if (AmmoCount > 0 && AmmoCount <= MaxCapacityAmmo)
         {
             float step = AmmoCount / MaxCapacityAmmo;
             CapasityGun_image.fillAmount = step;
