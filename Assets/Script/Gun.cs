@@ -55,6 +55,7 @@ public class Gun : MonoBehaviour
         var pos = this.transform.localPosition;
         var dir = (last - current).normalized;
         pos.x += -dir.x * sensivity;
-        this.transform.localPosition = pos;
+        this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
+
     }
 }
