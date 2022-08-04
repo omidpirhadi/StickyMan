@@ -14,7 +14,13 @@ public class Body : MonoBehaviour
         settingUI.OnChangeSetting += OnChangeSetting;
         gun = FindObjectOfType<Gun>();
     }
+    public void Update()
+    {
+        if (rigidbody.velocity.magnitude > 200.0f)
+        {
 
+        }
+    }
     private void OnChangeSetting()
     {
         rigidbody.mass = settingUI.massbody;
@@ -26,11 +32,7 @@ public class Body : MonoBehaviour
     {
         if(collision.collider.tag == "Bullet")
         {
-            //Debug.Log("CCCCCCCCCCCCCCCCCCCCCC");
-            //var nor = collision.contacts[0].normal;
-           // var point = collision.contacts[0].point;
-          //  var dir = (point - transform.position).normalized;
-            //rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+
             rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
         }
     }
