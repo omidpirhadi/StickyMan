@@ -9,6 +9,7 @@ TagManager:
   - koala
   - Ragdoll
   - ammobox
+  - Bullet
   layers:
   - Default
   - TransparentFX

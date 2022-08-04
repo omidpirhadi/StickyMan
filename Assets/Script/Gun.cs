@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using Sirenix.OdinInspector;
 public class Gun : MonoBehaviour
 {
     public float MaxCapacityAmmo = 100;
@@ -12,18 +14,43 @@ public class Gun : MonoBehaviour
     public Transform BulletPlace;
     public float PowerFire;
     public ForceMode forceMode;
+    public float SpeedChangePosition = 0.5f;
     private new Rigidbody rigidbody;
-
+    private Tween autoposition;
     private SettingUI settingUI;
+    private int dir = -1;
+    public bool automove = true;
+ 
     public void Start()
     {
         settingUI = FindObjectOfType<SettingUI>();
         settingUI.OnChangeSetting += OnChangeSetting;
+     //   AutoChangePosition();
         Ammo(0);
     }
+    public void Update()
+    {
+        if (automove == true)
+        {
+            if (dir == -1)
+            {
+                transform.Translate(Vector3.left * Time.fixedUnscaledDeltaTime * SpeedChangePosition,Space.World);
+                
+            }
+            else if (dir == 1)
+            {
+                transform.Translate(Vector3.right * Time.fixedUnscaledDeltaTime * SpeedChangePosition,Space.World);
+            }
+            if (transform.position.x <= -4.89)
+                dir = 1;
+            else if (transform.position.x >= 4.89)
+                dir = -1;
+        }
 
+    }
     private void OnChangeSetting()
     {
+        
         PowerFire = settingUI.powergun;
     }
 
@@ -57,6 +84,41 @@ public class Gun : MonoBehaviour
         pos.x += -dir.x * sensivity;
         this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
 
+    }
+    public void ChangePositionWithSlider(float x, float sensivity)
+    {
+
+
+        var pos = this.transform.localPosition;
+       
+        pos.x = x * sensivity;
+        this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
+
+    }
+    
+    public void AutoChangePosition()
+    {
+       autoposition =  this.transform.DOMoveX(-5, SpeedChangePosition).SetEase(Ease.Linear).OnComplete(() => {
+            this.transform.DOMoveX(+5, SpeedChangePosition).SetEase(Ease.Linear).OnComplete(() => { AutoChangePosition(); });
+        });
+        
+        
+    }
+    [Button("KillAutoMove",ButtonSizes.Medium)]
+    public void  AutoMoveKill()
+
+    {
+        // autoposition.Kill();
+        automove = false;
+    //    Debug.Log("AutoPlayKill");
+    }
+    [Button("PlayAutoMove", ButtonSizes.Medium)]
+    public void AutoMovePlay()
+
+    {
+        automove = true;
+       // AutoChangePosition();
+     //   Debug.Log("AutoPlayRun");
     }
     public void RotateGunToAim(Vector3 point)
     {

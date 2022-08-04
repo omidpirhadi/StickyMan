@@ -22,6 +22,17 @@ public class Body : MonoBehaviour
     }
 
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Bullet")
+        {
+            //Debug.Log("CCCCCCCCCCCCCCCCCCCCCC");
+            //var nor = collision.contacts[0].normal;
+           // var point = collision.contacts[0].point;
+          //  var dir = (point - transform.position).normalized;
+            //rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+            rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+        }
+    }
 
-   
 }

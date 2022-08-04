@@ -81,6 +81,9 @@ public class SettingUI : MonoBehaviour
         
         Play_btn.onClick.AddListener(() => {
             Time.timeScale = 1;
+            var body = GameObject.FindGameObjectWithTag("Body");
+      
+ 
         });
         Pause_btn.onClick.AddListener(() => {
             Time.timeScale = 0;
@@ -93,6 +96,8 @@ public class SettingUI : MonoBehaviour
             body.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             body.transform.position = new Vector3(0, 16, 0);
             body.transform.eulerAngles = new Vector3(0, 180, 0);
+            body.GetComponent<Rigidbody>().isKinematic = false;
+            FindObjectOfType<Gun>().Ammo(+100);
 
         });
     }
