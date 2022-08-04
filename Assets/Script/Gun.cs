@@ -58,4 +58,11 @@ public class Gun : MonoBehaviour
         this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
 
     }
+    public void RotateGunToAim(Vector3 point)
+    {
+
+        var dir = (point - this.transform.position).normalized;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        this.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
+    }
 }

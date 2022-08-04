@@ -78,7 +78,7 @@ public class Controller : MonoBehaviour
                     ring.SetRange(range);
                     ring.SetRotation(secondTouch);
 
-                    RotateGunToAim(secondTouch);
+                    Gun.RotateGunToAim(secondTouch);
                 }
                 else
                 {
@@ -103,13 +103,7 @@ public class Controller : MonoBehaviour
         }
 
     }
-    private void RotateGunToAim( Vector3 point)
-    {
-
-        var dir = (point - Gun.transform.position).normalized;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        Gun.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
-    }
+ 
     private void SpwanHumen()
     {
        humen = Instantiate(HumenPrefabs[0], SpwanPlaceHume.transform.position, Quaternion.identity);
