@@ -9,38 +9,24 @@ public class Controller : MonoBehaviour
 
     public Gun Gun;
     public RingPower ring;
-    public List< GameObject> HumenPrefabs;
-
-    public Transform SpwanPlaceHume;
+    
+  
     public LayerMask GunMask;
-
-    public Slider PosSlider; 
-    public float Y_DIFF_MAX = 5;
     public float SensivityMoveGun = 0.1f;
-    public float MinYCamera;
-   [SerializeField] private GameObject humen;
+    
     private Vector3 firstTouch;
     private Vector3 secondTouch;
-
-    private Vector3 current_touch , last_touch , touch_pos_after_diff;
-    private Ray ray;
-    private RaycastHit hit;
-    private bool selecetdGun;
-    private bool run = false;
+    public bool GameStarted = false;
     void Start()
     {
-        PosSlider.onValueChanged.AddListener((x) => {
 
-            Gun.ChangePositionWithSlider(x, SensivityMoveGun);
-
-        });
     }
 
     
     void Update()
     {
-
-        Touch2();
+        if (GameStarted)
+            Touch2();
     }
 
     private void Touch2()
@@ -56,7 +42,7 @@ public class Controller : MonoBehaviour
                 Time.timeScale = 0.2f;
                 firstTouch = Camera.main.ScreenToWorldPoint(touch.position);
                 firstTouch.z = 0;
-                current_touch = firstTouch;
+               // current_touch = firstTouch;
                 Gun.AutoMoveKill();
                 ring.PlaySetRangWithTime();
                 ring.SetPosition(Gun.transform.position);
@@ -68,7 +54,7 @@ public class Controller : MonoBehaviour
 
                 secondTouch = Camera.main.ScreenToWorldPoint(touch.position);
                 secondTouch.z = 0;
-                current_touch = secondTouch;
+               // current_touch = secondTouch;
                 /*if (run == false)
                 {
                     ring.SetRangeWithTime();
@@ -82,12 +68,12 @@ public class Controller : MonoBehaviour
 
 
 
-                last_touch = current_touch;
+               // last_touch = current_touch;
 
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                run = false;
+              //  run = false;
                 Time.timeScale = 1.0f;
                 Gun.AutoMovePlay();
                 ring.KillSetRangWithTime();
@@ -104,8 +90,5 @@ public class Controller : MonoBehaviour
 
     }
  
-    private void SpwanHumen()
-    {
-       humen = Instantiate(HumenPrefabs[0], SpwanPlaceHume.transform.position, Quaternion.identity);
-    }
+    
 }

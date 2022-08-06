@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     public Vector3 FirstPosCam;
     public float MaxDistance = 5;
     public float temp_dis;
-    
+    public bool ready = false;
     private BuildPlatform platform;
     private float p;
     void Start()
@@ -29,23 +29,35 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null)
+        if (ready)
         {
-            target = GameObject.FindGameObjectWithTag("Body").transform;
+            if (target == null)
+            {
 
+                if (GameObject.FindGameObjectWithTag("Body"))
+                {
+                    target = GameObject.FindGameObjectWithTag("Body").transform;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            if (target != null)
+            {
+                temp_dis = Vector3.Distance(new Vector3(transform.position.x, transform.position.y, 0), new Vector3(target.position.x, target.position.y, 0));
+                if (target.position.y > Y_Min)
+                {
+                    transform.DOMove(new Vector3(transform.position.x, Mathf.Clamp(target.position.y, transform.position.y, Y_max), transform.position.z), SpeedFollow);
+
+                }
+
+                else
+                {
+                    transform.DOMove(FirstPosCam, 0.5f);
+                }
+            }
         }
-        temp_dis = Vector3.Distance(new Vector3(transform.position.x, transform.position.y, 0), new Vector3(target.position.x, target.position.y, 0));
-        if (target.position.y > Y_Min)
-        {
-            transform.DOMove(new Vector3(transform.position.x, Mathf.Clamp(target.position.y, Y_Min, Y_max), transform.position.z), SpeedFollow);
-
-        }
-
-        else
-        {
-            transform.DOMove(FirstPosCam, 0.5f);
-        }
-
     }
 
 }

@@ -7,19 +7,31 @@ public class Body : MonoBehaviour
     private SettingUI settingUI;
     private new Rigidbody rigidbody;
     private Gun gun;
+    private GameManager gameManager;
+
     public void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         settingUI = FindObjectOfType<SettingUI>();
+        gameManager = FindObjectOfType<GameManager>(); 
         settingUI.OnChangeSetting += OnChangeSetting;
         gun = FindObjectOfType<Gun>();
     }
     public void Update()
     {
-        if (rigidbody.velocity.magnitude > 200.0f)
+        if (rigidbody.velocity.magnitude > 50.0f)
         {
-
+            rigidbody.drag = 5;
         }
+        else
+
+        {
+            rigidbody.drag = 1;
+        }
+    }
+    public void LateUpdate()
+    {
+        gameManager.BodyCurrentHeight = transform.position.y;
     }
     private void OnChangeSetting()
     {

@@ -7,11 +7,11 @@ public class BuildPlatform : MonoBehaviour
 {
     public int CurrentLevel;
     public List<LEVEL> Levels;
-    
+    public GameObject Envirement;
     [Button("CreateEnvirment",ButtonSizes.Medium)]
     public void CreateEnvirment()
     {
-        GameObject envirment = new GameObject("Envirment");
+        Envirement = new GameObject("Envirment");
 
         int dis = Levels[CurrentLevel].DistansWallEcheOther;
         var wall_prefabs = Levels[CurrentLevel].Wall_prefab;
@@ -33,14 +33,14 @@ public class BuildPlatform : MonoBehaviour
             }
             if (i == h - 1)
             {
-                var endline = Instantiate(endline_prefab, new Vector3(0, (100 * i) + 100, 0), Quaternion.identity, envirment.transform);
+                var endline = Instantiate(endline_prefab, new Vector3(0, (100 * i) + 100, 0), Quaternion.identity, Envirement.transform);
             }
 
 
-            var wall_L = Instantiate(wall_prefabs, pos_left, Quaternion.identity, envirment.transform);
+            var wall_L = Instantiate(wall_prefabs, pos_left, Quaternion.identity, Envirement.transform);
             wall_L.name = "wall_left" + i;
 
-            var wall_R = Instantiate(wall_prefabs, pos_right, Quaternion.identity, envirment.transform);
+            var wall_R = Instantiate(wall_prefabs, pos_right, Quaternion.identity, Envirement.transform);
             wall_R.name = "wall_right" + i;
 
             //CreatePlatform(envirment.transform);
@@ -48,7 +48,7 @@ public class BuildPlatform : MonoBehaviour
       
     }
     [Button("CreatePlatform", ButtonSizes.Medium)]
-    public void CreatePlatform(Transform envirment )
+    public void CreatePlatform( )
     {
         Vector3 pos_platform = new Vector3();
         int h = Levels[CurrentLevel].Height * 100;
@@ -68,7 +68,7 @@ public class BuildPlatform : MonoBehaviour
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
 
                     var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
-                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, envirment);
+                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
                 }
                 else if (rand_pos == 1)
                 {
@@ -76,7 +76,7 @@ public class BuildPlatform : MonoBehaviour
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
 
                     var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
-                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, envirment);
+                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
                 }
                 else if (rand_pos == 2)
                 {
@@ -84,7 +84,7 @@ public class BuildPlatform : MonoBehaviour
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
 
                     var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
-                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, envirment);
+                    var p = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
                 }
 
                 temp_dis += Levels[CurrentLevel].DistancePlatformEachOther;
@@ -92,7 +92,7 @@ public class BuildPlatform : MonoBehaviour
         }
     }
     [Button("SpwanAmmoBox", ButtonSizes.Medium)]
-    public void SpwanBoxAmmo(Transform envirment)
+    public void SpwanBoxAmmo()
     {
         Vector3 pos_platform = new Vector3();
         int h = Levels[CurrentLevel].Height * 100;
@@ -112,7 +112,7 @@ public class BuildPlatform : MonoBehaviour
             }
             temp_dis += Levels[CurrentLevel].DistanceAmmoBoxEachOther;
             if (pos_platform.y < h-Levels[CurrentLevel].PadingUp)
-                Instantiate(Levels[CurrentLevel].AmmoBox_prefab, pos_platform, Levels[CurrentLevel].AmmoBox_prefab.transform.rotation, envirment);
+                Instantiate(Levels[CurrentLevel].AmmoBox_prefab, pos_platform, Levels[CurrentLevel].AmmoBox_prefab.transform.rotation, Envirement.transform);
         }
     }
 }
