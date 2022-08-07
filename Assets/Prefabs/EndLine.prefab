@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1321067547405905635}
   - component: {fileID: 7083939481330998942}
   - component: {fileID: -1928911073085002185}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: EndLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,3 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d0535913d3f5241ba4f1f89e3b6276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDeadLine: 0

@@ -60,8 +60,9 @@ public class Gun : MonoBehaviour
         if (AmmoCount > 0)
         {
             var b = Instantiate(Bullet, BulletPlace.position, Quaternion.identity);
-
-            b.AddForce(force.normalized * (power * PowerFire), forceMode);
+            var f = force.normalized * (power * PowerFire);
+            f.z = 00.0f;
+            b.AddForce(f, forceMode);
             Ammo(-1);
         }
 

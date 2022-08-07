@@ -14,12 +14,12 @@ public class Body : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         settingUI = FindObjectOfType<SettingUI>();
         gameManager = FindObjectOfType<GameManager>(); 
-        settingUI.OnChangeSetting += OnChangeSetting;
+       settingUI.OnChangeSetting += OnChangeSetting;
         gun = FindObjectOfType<Gun>();
     }
     public void Update()
     {
-        if (rigidbody.velocity.magnitude > 50.0f)
+        if (rigidbody.velocity.magnitude > 20.0f)
         {
             rigidbody.drag = 5;
         }
@@ -44,8 +44,9 @@ public class Body : MonoBehaviour
     {
         if(collision.collider.tag == "Bullet")
         {
-
-            rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+            var f = Vector3.up * collision.relativeVelocity.magnitude;
+            f.z = 0.0f;
+            rigidbody.AddForce(f, ForceMode.Impulse);
         }
     }
 

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5235888976230222895}
   - component: {fileID: 291641888408856144}
   - component: {fileID: 2052634012271573782}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: T_mesh
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144304103504246590}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.27000046, z: 0}
-  m_LocalScale: {x: 3.1750717, y: 3.2303157, z: 1}
+  m_LocalPosition: {x: 0, y: 0.27000046, z: 3.99}
+  m_LocalScale: {x: 3.1750717, y: 3.2303157, z: 30}
   m_Children: []
   m_Father: {fileID: 1051316386367400668}
   m_RootOrder: 0
@@ -120,9 +120,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1051316386367400668}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TriangleLeft
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

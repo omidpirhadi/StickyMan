@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5077639010693149547}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: LoziMiddel_new
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 2500446378217711746}
   - component: {fileID: 3126922972576718426}
   - component: {fileID: 3813039478369214902}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Tirangleleft_new
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -124,7 +124,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5060444177187149915, guid: abda26bde38f7834384fd6de567cb645, type: 3}
 --- !u!54 &3813039478369214902
@@ -139,7 +139,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 3
@@ -156,9 +156,9 @@ GameObject:
   - component: {fileID: 2500446378653411658}
   - component: {fileID: 8776886581305733041}
   - component: {fileID: 1954119846927124655}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TriangleRight_new
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -235,7 +235,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5060444177187149915, guid: abda26bde38f7834384fd6de567cb645, type: 3}
 --- !u!54 &1954119846927124655
@@ -250,7 +250,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 3

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4583475507568089223}
   - component: {fileID: 1765184526404578381}
   - component: {fileID: 626943224080677271}
-  m_Layer: 0
+  - component: {fileID: 5133546531781926985}
+  m_Layer: 16
   m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252146093623856536}
   m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0.00000019861236, w: 0.00000019861236}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00037808, y: -0.000030518, z: -1.3155e-11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2410240473706012267}
@@ -93,6 +94,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 100.000015, y: 1.0000241, z: 1.0000005}
   m_Center: {x: -50.000008, y: -0.00001192093, z: 3.348354e-12}
+--- !u!54 &5133546531781926985
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252146093623856536}
+  serializedVersion: 2
+  m_Mass: 1000
+  m_Drag: 1000
+  m_AngularDrag: 1000
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 3
 --- !u!1 &2410240473706012264
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2410240473706012267}
   - component: {fileID: -8523993069089127331}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Wall_Pivot
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -118,8 +135,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410240473706012264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0003103, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 20}
   m_Children:
   - {fileID: 591129499589121826}
   m_Father: {fileID: 0}

@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject winnerbox;
     void Awake()
     {
-        GameAnalytics.Initialize();
+       // GameAnalytics.Initialize();
 
     }
     void Start()
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void LateUpdate()
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
     }
     public void LevelCompeleted()
     {
-        GA_LevelCompeletEvent(1);
+       //// GA_LevelCompeletEvent(1);
         Effect.Play();
         EndGameMenu_ui.SetActive(true);
         gameoverbox.SetActive(false);
@@ -77,11 +77,15 @@ public class GameManager : MonoBehaviour
         controller.GameStarted = false;
         gun.automove = false;
         Camera.transform.position = new Vector3(0, 13.28f, -10);
+
+        
         Camera.GetComponent<CameraFollow>().ready = false;
+        Camera.GetComponent<CameraFollow>().target = null;
+
     }
     public void LevelFail()
     {
-        GA_LevelFailEvent(2);
+       // GA_LevelFailEvent(2);
         EndGameMenu_ui.SetActive(true);
         gameoverbox.SetActive(true);
         winnerbox.SetActive(false);
@@ -89,11 +93,13 @@ public class GameManager : MonoBehaviour
         gun.automove = false;
         Camera.transform.position = new Vector3(0, 13.28f, -10);
         Camera.GetComponent<CameraFollow>().ready = false;
+        Camera.GetComponent<CameraFollow>().target = null;
+
     }
 
     private void GA_LevelCompeletEvent(int level)
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "CompeletedLevel",level);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "CompeletedLevel", level);
 
     }
     private void GA_LevelFailEvent(int level)
@@ -113,10 +119,10 @@ public class GameManager : MonoBehaviour
     }
     private void SetGridantSkyBox()
     {
-        var amount =  BodyCurrentHeight / HeightLevel;
+        var amount = BodyCurrentHeight / HeightLevel;
 
         SkyBox.SetFloat("_mult", Mathf.Clamp(amount, 0, 1));
-        SkyBox.SetFloat("_pwer", Mathf.Clamp(1-amount , 0, 1));
+        SkyBox.SetFloat("_pwer", Mathf.Clamp(1 - amount, 0, 1));
     }
     private void SetSliderHeightHumen()
     {
@@ -129,60 +135,65 @@ public class GameManager : MonoBehaviour
         Camera.transform.position = new Vector3(0, 13.28f, -10);
         Destroy(buildPlatform.Envirement);
         HeightSlider.value = 0;
-        
+
         var b = FindObjectOfType<Body>();
         if (b)
 
         {
             Destroy(b.gameObject);
         }
-        yield return new WaitForSecondsRealtime(00.01f);
-        buildPlatform.CreateEnvirment();
-        yield return new WaitForSecondsRealtime(00.01f);
-        buildPlatform.CreatePlatform();
-        yield return new WaitForSecondsRealtime(00.01f);
-        buildPlatform.SpwanBoxAmmo();
-        yield return new WaitForSecondsRealtime(00.01f);
-        
-        Camera.transform.position = new Vector3(0, 13.28f, -10);
         yield return new WaitForSecondsRealtime(00.1f);
-        Camera.GetComponent<CameraFollow>().ready = true;
+        buildPlatform.CreateEnvirment();
+        yield return new WaitForSecondsRealtime(00.1f);
+        buildPlatform.CreatePlatform();
+        yield return new WaitForSecondsRealtime(00.1f);
+        buildPlatform.SpwanBoxAmmo();
         yield return new WaitForSecondsRealtime(00.1f);
 
-        HumenShoot();
-        gun.GunReady();
-        
-        controller.GameStarted = true;
+
+
+
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);
         EndGameMenu_ui.SetActive(false);
+       
+        
+        yield return new WaitForSecondsRealtime(00.1f);
+
+        controller.GameStarted = true;
+        HumenShoot();
+        gun.GunReady();
+        Camera.GetComponent<CameraFollow>().ready = true;
+
 
     }
     private IEnumerator LevelReset()
     {
         Camera.transform.position = new Vector3(0, 13.28f, -10);
-        HeightSlider.value = 0;
         var b = FindObjectOfType<Body>();
         if (b)
 
         {
             Destroy(b.gameObject);
         }
-        yield return new WaitForSecondsRealtime(00.01f);
-        
-        gun.GunReady();
-        
-        Camera.GetComponent<CameraFollow>().ready = true;     
-        yield return new WaitForSecondsRealtime(00.01f);
-        
-        
+
+        HeightSlider.value = 0;
 
         yield return new WaitForSecondsRealtime(00.1f);
-        HumenShoot();
+
+
+
+
+        yield return new WaitForSecondsRealtime(00.1f);
         controller.GameStarted = true;
+
+
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);
         EndGameMenu_ui.SetActive(false);
+        HumenShoot();
+        gun.GunReady();
+        Camera.GetComponent<CameraFollow>().ready = true;
 
     }
 }

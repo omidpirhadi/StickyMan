@@ -10,6 +10,7 @@ TagManager:
   - Ragdoll
   - ammobox
   - Bullet
+  - platform
   layers:
   - Default
   - TransparentFX
@@ -22,12 +23,12 @@ TagManager:
   - TouchCollider
   - Bullet
   - PostPro
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - rogdoll
+  - humen
+  - EndLine
+  - DeadLine
+  - CamEndPOS
+  - WallandPlatform
   - 
   - 
   - 

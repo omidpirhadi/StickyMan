@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3351021138410858764}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TriangleRight
-  m_TagString: Untagged
+  m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3221326392872101566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.61, y: 9.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: -30}
   m_Children:
   - {fileID: 6361591633781004197}
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5189208067576884426}
   - component: {fileID: 5864974389620708955}
   - component: {fileID: 5000595064588349726}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: T_mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
