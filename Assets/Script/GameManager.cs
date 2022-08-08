@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameoverbox;
     public GameObject winnerbox;
+
+    private GameObject humen_spwaned;
     void Awake()
     {
        // GameAnalytics.Initialize();
@@ -113,8 +115,8 @@ public class GameManager : MonoBehaviour
     }
     private void HumenShoot()
     {
-        var h = Instantiate(HumenPrefabs[0], gun.BulletPlace.position, HumenPrefabs[0].transform.rotation);
-        h.GetComponent<Rigidbody>().AddForce(Vector3.up * 50, ForceMode.Impulse);
+       humen_spwaned = Instantiate(HumenPrefabs[0], gun.BulletPlace.position, HumenPrefabs[0].transform.rotation);
+        humen_spwaned.GetComponent<Rigidbody>().AddForce(Vector3.up * 100, ForceMode.Impulse);
 
     }
     private void SetGridantSkyBox()
@@ -136,11 +138,12 @@ public class GameManager : MonoBehaviour
         Destroy(buildPlatform.Envirement);
         HeightSlider.value = 0;
 
-        var b = FindObjectOfType<Body>();
-        if (b)
+       
+        if (humen_spwaned)
 
         {
-            Destroy(b.gameObject);
+            Destroy(humen_spwaned);
+            humen_spwaned = null;
         }
         yield return new WaitForSecondsRealtime(00.1f);
         buildPlatform.CreateEnvirment();
@@ -170,11 +173,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator LevelReset()
     {
         Camera.transform.position = new Vector3(0, 13.28f, -10);
-        var b = FindObjectOfType<Body>();
-        if (b)
+        if (humen_spwaned)
 
         {
-            Destroy(b.gameObject);
+            Destroy(humen_spwaned);
+            humen_spwaned = null;
         }
 
         HeightSlider.value = 0;
