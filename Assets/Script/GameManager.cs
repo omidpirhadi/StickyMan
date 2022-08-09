@@ -121,16 +121,24 @@ public class GameManager : MonoBehaviour
     }
     private void SetGridantSkyBox()
     {
-        var amount = BodyCurrentHeight / HeightLevel;
+        if (humen_spwaned)
+        {
+            BodyCurrentHeight = humen_spwaned.transform.position.y;
+            var amount = BodyCurrentHeight / HeightLevel;
 
-        SkyBox.SetFloat("_mult", Mathf.Clamp(amount, 0, 1));
-        SkyBox.SetFloat("_pwer", Mathf.Clamp(1 - amount, 0, 1));
+            SkyBox.SetFloat("_mult", Mathf.Clamp(amount, 0, 1));
+            SkyBox.SetFloat("_pwer", Mathf.Clamp(1 - amount, 0, 1));
+        }
     }
     private void SetSliderHeightHumen()
     {
-        var amount = BodyCurrentHeight / HeightLevel;
+        if (humen_spwaned)
+        {
+            BodyCurrentHeight = humen_spwaned.transform.position.y;
+            var amount = BodyCurrentHeight / HeightLevel;
 
-        HeightSlider.value = amount;
+            HeightSlider.value = amount;
+        }
     }
     private IEnumerator LevelSpwan()
     {

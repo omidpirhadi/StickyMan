@@ -5,7 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
 
-    Transform cam;
+    public ParticleSystem explosionEffet;
+   private Transform cam;
+
     void Start()
     {
         cam = Camera.main.transform;
@@ -26,7 +28,10 @@ public class Bullet : MonoBehaviour
     {
         if(collision.collider.tag == "Body" || collision.collider.tag == "Wall")
         {
-           // Destroy(this.gameObject, 0.0f);
+           
+            var effect = Instantiate(explosionEffet, collision.contacts[0].point, explosionEffet.transform.rotation);
+            effect.Play(true);
+            Destroy(this.gameObject, 0.1f);
            // Debug.Log("A");
         }
     }

@@ -134,7 +134,7 @@ public class Gun : MonoBehaviour
     public void GunReady()
     {
 
-        Ammo(0);
+        Ammo(50);
         transform.localPosition = new Vector3(0f, -11.91f, 10);
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;

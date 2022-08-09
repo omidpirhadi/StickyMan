@@ -31,7 +31,7 @@ public class Body : MonoBehaviour
     }
     public void LateUpdate()
     {
-        gameManager.BodyCurrentHeight = transform.position.y;
+        //gameManager.BodyCurrentHeight = transform.position.y;
     }
     private void OnChangeSetting()
     {
