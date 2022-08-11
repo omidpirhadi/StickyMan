@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2586859326137093160}
   - component: {fileID: 8764481974433606485}
   - component: {fileID: 8764481974433606484}
+  - component: {fileID: 7308523929478846404}
   m_Layer: 16
   m_Name: Rotator
   m_TagString: platform
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764481974433606483}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: 0, y: 7.63, z: 0}
-  m_LocalScale: {x: 1.19, y: 16.233423, z: 1.19}
+  m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -0, y: 7.641, z: 0}
+  m_LocalScale: {x: 1.185628, y: 16.233423, z: 1.19}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.0023129024, y: -90, z: 90}
 --- !u!33 &4609096552801705792
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -108,3 +109,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.1698923, y: 0.47983092, z: 0.28}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &7308523929478846404
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764481974433606483}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 167ced15057493a46a31ba45b2844d8e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 167ced15057493a46a31ba45b2844d8e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

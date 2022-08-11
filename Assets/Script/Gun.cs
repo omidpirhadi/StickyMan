@@ -6,6 +6,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 public class Gun : MonoBehaviour
 {
+    public ParticleSystem CannonShotEffect;
     public float MaxCapacityAmmo = 100;
     public float AmmoCount = 50;
     public Image CapasityGun_image;
@@ -64,6 +65,7 @@ public class Gun : MonoBehaviour
             f.z = 00.0f;
             b.AddForce(f, forceMode);
             Ammo(-1);
+            CannonShotEffect.Play(true);
         }
 
     }

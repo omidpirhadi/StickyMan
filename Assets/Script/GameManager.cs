@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public BuildPlatform buildPlatform;
     public Controller controller;
-    public Slider HeightSlider;
+    
     public Gun gun;
     public Transform Camera;
     public Material SkyBox;
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public float HeightLevel;
     public float BodyCurrentHeight;
 
+    public TMPro.TMP_Text Ammo_text;
+    public Slider HeightSlider;
     public GameObject StartMenu_ui;
     public Button Start_btn;
 
@@ -68,6 +70,7 @@ public class GameManager : MonoBehaviour
 
         SetGridantSkyBox();
         SetSliderHeightHumen();
+        SetAmmoTextInUI();
     }
     public void LevelCompeleted()
     {
@@ -139,6 +142,10 @@ public class GameManager : MonoBehaviour
 
             HeightSlider.value = amount;
         }
+    }
+    private void SetAmmoTextInUI()
+    {
+        Ammo_text.text = "AMMO:" + gun.AmmoCount;
     }
     private IEnumerator LevelSpwan()
     {
