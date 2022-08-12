@@ -6,7 +6,7 @@ public class Body : MonoBehaviour
 {
     private SettingUI settingUI;
     private new Rigidbody rigidbody;
-    private Gun gun;
+//    private Gun gun;
     private GameManager gameManager;
 
     public void Start()
@@ -15,7 +15,7 @@ public class Body : MonoBehaviour
         settingUI = FindObjectOfType<SettingUI>();
         gameManager = FindObjectOfType<GameManager>(); 
        settingUI.OnChangeSetting += OnChangeSetting;
-        gun = FindObjectOfType<Gun>();
+     //   gun = FindObjectOfType<Gun>();
     }
     public void Update()
     {
