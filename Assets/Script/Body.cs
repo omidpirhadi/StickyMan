@@ -19,9 +19,9 @@ public class Body : MonoBehaviour
     }
     public void Update()
     {
-        if (rigidbody.velocity.magnitude > 20.0f)
+        if (rigidbody.velocity.magnitude > 10.0f)
         {
-            rigidbody.drag = 5;
+            rigidbody.drag = 10;
         }
         else
 
@@ -42,12 +42,12 @@ public class Body : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Bullet")
+      /**  if(collision.collider.tag == "Bullet")
         {
             var f = Vector3.up * collision.relativeVelocity.magnitude;
             f.z = 0.0f;
             rigidbody.AddForce(f, ForceMode.Impulse);
-        }
+        }*/
     }
 
 }

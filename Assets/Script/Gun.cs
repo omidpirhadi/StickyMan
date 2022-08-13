@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using Sirenix.OdinInspector;
+[RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
+    public GameObject HumenPrefabs;
     public ParticleSystem CannonShotEffect;
     public float MaxCapacityAmmo = 100;
     public float AmmoCount = 50;
     public Image CapasityGun_image;
     public Text CapacityGun_text;
-    public Rigidbody Bullet;
+    public Rigidbody Bullet_prefab;
     public Transform BulletPlace;
     public float PowerFire;
     public ForceMode forceMode;
@@ -21,11 +23,16 @@ public class Gun : MonoBehaviour
     private SettingUI settingUI;
     private int dir = -1;
     public bool automove = false;
+    private AudioSource audioSource;
+    private GameManager gameManager;
+    private bool firstShot = true;
    // public bool IsGunReady = false;
     public void Start()
     {
         settingUI = FindObjectOfType<SettingUI>();
         settingUI.OnChangeSetting += OnChangeSetting;
+        audioSource = GetComponent<AudioSource>();
+        gameManager = FindObjectOfType<GameManager>();
      //   AutoChangePosition();
        
     }
@@ -58,16 +65,25 @@ public class Gun : MonoBehaviour
 
     public void Fire(Vector3 force, float power)
     {
-        if (AmmoCount > 0)
+        var f = force.normalized * (power * PowerFire);
+        f.z = 00.0f;
+        if (firstShot == false)
         {
-            var b = Instantiate(Bullet, BulletPlace.position, Quaternion.identity);
-            var f = force.normalized * (power * PowerFire);
-            f.z = 00.0f;
-            b.AddForce(f, forceMode);
-            Ammo(-1);
-            CannonShotEffect.Play(true);
-        }
+            if (AmmoCount > 0)
+            {
+                var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
+             
+                b.AddForce(f, forceMode);
+                Ammo(-1);
+                CannonShotEffect.Play(true);
+                audioSource.Play();
+            }
 
+        }
+        else
+        {
+            HumenShoot(f);
+        }
     }
     public void Ammo(int a)
     {
@@ -141,6 +157,14 @@ public class Gun : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;
         AutoMovePlay();
+        firstShot = true;
        // IsGunReady = true;
+    }
+    private void HumenShoot(Vector3 force)
+    {
+       gameManager.humen_spwaned = Instantiate(HumenPrefabs, BulletPlace.position, HumenPrefabs.transform.rotation);
+       gameManager.humen_spwaned.GetComponent<Rigidbody>().AddForce(force, ForceMode.Impulse);
+        firstShot = false;
+
     }
 }

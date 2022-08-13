@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverbox;
     public GameObject winnerbox;
 
-    private GameObject humen_spwaned;
+    public  GameObject humen_spwaned;
     void Awake()
     {
        // GameAnalytics.Initialize();
@@ -124,14 +124,14 @@ public class GameManager : MonoBehaviour
     }
     private void SetGridantSkyBox()
     {
-        if (humen_spwaned)
+      /*  if (humen_spwaned)
         {
             BodyCurrentHeight = humen_spwaned.transform.position.y;
             var amount = BodyCurrentHeight / HeightLevel;
 
             SkyBox.SetFloat("_mult", Mathf.Clamp(amount, 0, 1));
             SkyBox.SetFloat("_pwer", Mathf.Clamp(1 - amount, 0, 1));
-        }
+        }*/
     }
     private void SetSliderHeightHumen()
     {
@@ -179,7 +179,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(00.1f);
 
         controller.GameStarted = true;
-        HumenShoot();
+        //HumenShoot();
         gun.GunReady();
         Camera.GetComponent<CameraFollow>().ready = true;
 
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);
         EndGameMenu_ui.SetActive(false);
-        HumenShoot();
+        //HumenShoot();
         gun.GunReady();
         Camera.GetComponent<CameraFollow>().ready = true;
 

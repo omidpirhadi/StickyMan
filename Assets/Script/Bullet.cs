@@ -29,8 +29,9 @@ public class Bullet : MonoBehaviour
         if(collision.collider.tag == "Body" || collision.collider.tag == "Wall")
         {
            
-            var effect = Instantiate(explosionEffet, collision.contacts[0].point, explosionEffet.transform.rotation);
+           var effect = Instantiate(explosionEffet, collision.contacts[0].point, explosionEffet.transform.rotation);
             effect.Play(true);
+            collision.rigidbody.angularVelocity = new Vector3(0, 0, 100);
             Destroy(this.gameObject, 0.1f);
            // Debug.Log("A");
         }
