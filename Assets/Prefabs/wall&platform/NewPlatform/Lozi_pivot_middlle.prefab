@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &144304103504246590
+--- !u!1 &1697777892167514632
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8868900787575525618}
-  - component: {fileID: 6360902310137250626}
-  - component: {fileID: 5235888976230222895}
-  - component: {fileID: 291641888408856144}
-  - component: {fileID: 2052634012271573782}
+  - component: {fileID: 6691040151646556227}
+  - component: {fileID: 2335473271465548078}
+  - component: {fileID: 7223051143779667005}
+  - component: {fileID: 1697777892167514633}
   m_Layer: 16
-  m_Name: T_mesh
+  m_Name: lozi
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8868900787575525618
+--- !u!4 &6691040151646556227
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144304103504246590}
-  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.27000046, z: 3.99}
-  m_LocalScale: {x: 3.1750717, y: 3.2303157, z: 30}
+  m_GameObject: {fileID: 1697777892167514632}
+  m_LocalRotation: {x: -0, y: 1, z: -0.000000021855694, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.5, y: 3, z: 44.5194}
   m_Children: []
-  m_Father: {fileID: 1051316386367400668}
+  m_Father: {fileID: 2090195645487241378}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!33 &6360902310137250626
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2335473271465548078
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144304103504246590}
-  m_Mesh: {fileID: 5060444177187149915, guid: abda26bde38f7834384fd6de567cb645, type: 3}
---- !u!23 &5235888976230222895
+  m_GameObject: {fileID: 1697777892167514632}
+  m_Mesh: {fileID: 3822247309040838107, guid: 27f0393980207784d95a857d5b05a5e7, type: 3}
+--- !u!23 &7223051143779667005
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144304103504246590}
+  m_GameObject: {fileID: 1697777892167514632}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +59,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 21894846db41c8444af9a3e329145cdc, type: 2}
+  - {fileID: 2100000, guid: 5ea925253ac816a40a358b7769d8c74d, type: 2}
+  - {fileID: 2100000, guid: 18d5897de0ed0dc409093404db936ea6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,37 +81,21 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &291641888408856144
+--- !u!64 &1697777892167514633
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144304103504246590}
+  m_GameObject: {fileID: 1697777892167514632}
   m_Material: {fileID: 13400000, guid: edf1469a662d7354ca5fe4ed1e535a66, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 5060444177187149915, guid: abda26bde38f7834384fd6de567cb645, type: 3}
---- !u!54 &2052634012271573782
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 144304103504246590}
-  serializedVersion: 2
-  m_Mass: 100
-  m_Drag: 100
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 126
-  m_CollisionDetection: 3
---- !u!1 &4644685379001279404
+  m_Mesh: {fileID: 3822247309040838107, guid: 27f0393980207784d95a857d5b05a5e7, type: 3}
+--- !u!1 &2090195645487241377
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,26 +103,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1051316386367400668}
+  - component: {fileID: 2090195645487241378}
   m_Layer: 16
-  m_Name: TriangleLeft
+  m_Name: Lozi_pivot_middlle
   m_TagString: platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1051316386367400668
+--- !u!4 &2090195645487241378
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4644685379001279404}
+  m_GameObject: {fileID: 2090195645487241377}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.95, y: 9.73, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 17, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 8868900787575525618}
+  - {fileID: 6691040151646556227}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

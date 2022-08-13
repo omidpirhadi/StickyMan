@@ -63,7 +63,7 @@ public class BuildPlatform : MonoBehaviour
             {
                 if (rand_pos == 0)
                 {
-                    pos_platform = new Vector3(distance * -1, pos_platform.y, 0.0f);
+                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
 
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
 
@@ -80,7 +80,7 @@ public class BuildPlatform : MonoBehaviour
                 }
                 else if (rand_pos == 2)
                 {
-                    pos_platform = new Vector3(distance * 1, pos_platform.y, 0.0f);
+                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
 
                     var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
@@ -124,16 +124,21 @@ public struct LEVEL
     public int Height;
     [BoxGroup("Wall Settings")]
     public int DistansWallEcheOther;
+    
+   
     [BoxGroup("Wall Settings")]
     public PlatformWall Wall_prefab;
     [BoxGroup("Plastform Settings")]
     public float DistancePlatformEachOther;
-    [BoxGroup("Plastform Settings")]
+  
     [BoxGroup("Plastform Settings/Padding")]
     public float PadingDown;
-    [BoxGroup("Plastform Settings")]
+    
     [BoxGroup("Plastform Settings/Padding")]
     public float PadingUp;
+    [BoxGroup("Plastform Settings/Padding")]
+    public float Offset_X;
+
     [BoxGroup("Plastform Settings")]
     public List<Platform> LeftPlatform;
     [BoxGroup("Plastform Settings")]

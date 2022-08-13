@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
     public int CurrentLevel = 0;
     public float HeightLevel;
     public float BodyCurrentHeight;
+    private int CoinCount;
 
+    public TMPro.TMP_Text Coin_text;
     public TMPro.TMP_Text Ammo_text;
     public Slider HeightSlider;
     public GameObject StartMenu_ui;
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
             Application.Quit();
         });
+        SetCoinvalue(0);
     }
 
     // Update is called once per frame
@@ -143,9 +146,16 @@ public class GameManager : MonoBehaviour
             HeightSlider.value = amount;
         }
     }
+
+    public void  SetCoinvalue(int c)
+    {
+        CoinCount += c;
+        Coin_text.text = CoinCount.ToString();
+      //  Debug.Log("1");
+    }
     private void SetAmmoTextInUI()
     {
-        Ammo_text.text = "AMMO:" + gun.AmmoCount;
+        Ammo_text.text = gun.AmmoCount.ToString();
     }
     private IEnumerator LevelSpwan()
     {
