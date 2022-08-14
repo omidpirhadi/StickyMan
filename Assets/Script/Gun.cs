@@ -33,9 +33,12 @@ public class Gun : MonoBehaviour
         settingUI.OnChangeSetting += OnChangeSetting;
         audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
+       
      //   AutoChangePosition();
        
     }
+
+
     public void Update()
     {
 

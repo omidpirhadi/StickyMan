@@ -127,14 +127,14 @@ public class GameManager : MonoBehaviour
     }
     private void SetGridantSkyBox()
     {
-      /*  if (humen_spwaned)
+       if (humen_spwaned)
         {
             BodyCurrentHeight = humen_spwaned.transform.position.y;
             var amount = BodyCurrentHeight / HeightLevel;
 
             SkyBox.SetFloat("_mult", Mathf.Clamp(amount, 0, 1));
             SkyBox.SetFloat("_pwer", Mathf.Clamp(1 - amount, 0, 1));
-        }*/
+        }
     }
     private void SetSliderHeightHumen()
     {
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(00.1f);
         buildPlatform.CreatePlatform();
         yield return new WaitForSecondsRealtime(00.1f);
-        buildPlatform.SpwanBoxAmmo();
+        buildPlatform.SpwanItems();
         yield return new WaitForSecondsRealtime(00.1f);
 
 
