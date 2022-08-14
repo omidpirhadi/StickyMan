@@ -191,7 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Capacity: 1
   gameManager: {fileID: 0}
-  particle: {fileID: 8277145792682220108}
+  Effect: {fileID: 1005498216421359575}
 --- !u!1 &8277145792682220110
 GameObject:
   m_ObjectHideFlags: 0

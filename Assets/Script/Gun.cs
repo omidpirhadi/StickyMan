@@ -155,11 +155,12 @@ public class Gun : MonoBehaviour
     public void GunReady()
     {
 
-        Ammo(50);
+        AmmoCount = 0;
         transform.localPosition = new Vector3(0f, -11.91f, 10);
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;
         AutoMovePlay();
+        Ammo(50);
         firstShot = true;
        // IsGunReady = true;
     }

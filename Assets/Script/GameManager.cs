@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -160,10 +161,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator LevelSpwan()
     {
         Camera.transform.position = new Vector3(0, 13.28f, -10);
-        Destroy(buildPlatform.Envirement);
+        
         HeightSlider.value = 0;
+        Destroy(buildPlatform.Envirement);
+        yield return new WaitForSecondsRealtime(00.1f);
 
-       
         if (humen_spwaned)
 
         {
@@ -191,13 +193,23 @@ public class GameManager : MonoBehaviour
         controller.GameStarted = true;
         //HumenShoot();
         gun.GunReady();
+        SetAmmoTextInUI();
         Camera.GetComponent<CameraFollow>().ready = true;
 
 
     }
     private IEnumerator LevelReset()
     {
+        Handler_OnItemRestore(true);
+        yield return new WaitForSecondsRealtime(00.1f);
         Camera.transform.position = new Vector3(0, 13.28f, -10);
+        HeightSlider.value = 0;
+        CoinCount = 0;
+        SetCoinvalue(0);
+        
+
+
+        yield return new WaitForSecondsRealtime(00.1f);
         if (humen_spwaned)
 
         {
@@ -205,7 +217,7 @@ public class GameManager : MonoBehaviour
             humen_spwaned = null;
         }
 
-        HeightSlider.value = 0;
+        
 
         yield return new WaitForSecondsRealtime(00.1f);
 
@@ -221,7 +233,40 @@ public class GameManager : MonoBehaviour
         EndGameMenu_ui.SetActive(false);
         //HumenShoot();
         gun.GunReady();
+        SetAmmoTextInUI();
         Camera.GetComponent<CameraFollow>().ready = true;
+        
+    }
+    private Action <bool>itemrestore;
 
+    public event Action<bool> OnItemRestore
+    {
+        add { itemrestore += value; }
+        remove { itemrestore -= value; }
+    }
+    protected void Handler_OnItemRestore(bool restore)
+
+    {
+        if(itemrestore !=null)
+        {
+            itemrestore(restore); 
+
+        }
+    }
+    private Action itemdestory;
+
+    public event Action OnItemDestory
+    {
+        add { itemdestory += value; }
+        remove { itemdestory -= value; }
+    }
+    protected void Handler_OnItemDestroy()
+
+    {
+        if (itemdestory != null)
+        {
+            itemdestory();
+
+        }
     }
 }

@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Capacity: 12
   gun: {fileID: 0}
+  Effect: {fileID: 7313532160617754282}
 --- !u!1001 &7312368813938566580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +204,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25375709a7d2e24ba8b622405bfc216, type: 3}
+--- !u!1 &7313532160617754282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1163771896122142, guid: c25375709a7d2e24ba8b622405bfc216,
+    type: 3}
+  m_PrefabInstance: {fileID: 7312368813938566580}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7308123368455017918 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4903591308292106, guid: c25375709a7d2e24ba8b622405bfc216,

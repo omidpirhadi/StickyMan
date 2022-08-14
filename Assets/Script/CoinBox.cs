@@ -7,35 +7,33 @@ public class CoinBox : MonoBehaviour
 {
     public int Capacity;
     public GameManager gameManager;
-    public ParticleSystem particle;
-    private Transform cam;
+    
+    public GameObject Effect;
+    private bool Isused = false;
     public void Start()
     {
 
         gameManager = FindObjectOfType<GameManager>();
-        particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-      //  cam = Camera.main.transform;
+        gameManager.OnItemRestore += GameManager_OnItemRestore;
+        
+     
     }
-    public void FixedUpdate()
+    private void GameManager_OnItemRestore(bool restore)
     {
-       /* var dis = Vector3.Distance(this.transform.position, cam.position);
-        if(dis< 50)
+        if (restore)
         {
-            particle.Play(true);
+            Isused = false;
+            Effect.SetActive(true);
         }
-        else if(dis > 100)
-        {
-            particle.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        }*/
     }
     private void OnTriggerEnter(Collider t)
     {
-        if (t.tag == "Body")
+        if (t.tag == "Body" && Isused == false)
         {
-
+            Isused = true;
             gameManager.SetCoinvalue(+1);
-            Destroy(this.gameObject);
-            
+            Effect.SetActive(false);
+
         }
     }
 

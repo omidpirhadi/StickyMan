@@ -21,8 +21,8 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _Screenspace: 1
-    - _mult: 0.1529263
-    - _pwer: 0.8470737
+    - _mult: 0.06534906
+    - _pwer: 0.93465096
     m_Colors:
     - _Bottom: {r: 0, g: 0, b: 0, a: 0}
     - _Top: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}
