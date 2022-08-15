@@ -164,11 +164,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator LevelSpwan()
     {
         Camera.transform.position = new Vector3(0, 13.28f, -10);
-<<<<<<< Updated upstream
-        
-=======
-      //  Destroy(buildPlatform.Envirement);
->>>>>>> Stashed changes
+
         HeightSlider.value = 0;
         Destroy(buildPlatform.Envirement);
         yield return new WaitForSecondsRealtime(00.1f);
