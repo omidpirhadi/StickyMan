@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Profiling;
 using GameAnalyticsSDK;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
@@ -60,7 +60,10 @@ public class GameManager : MonoBehaviour
 
             Application.Quit();
         });
+        
         SetCoinvalue(0);
+       
+
     }
 
     // Update is called once per frame
@@ -161,7 +164,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator LevelSpwan()
     {
         Camera.transform.position = new Vector3(0, 13.28f, -10);
+<<<<<<< Updated upstream
         
+=======
+      //  Destroy(buildPlatform.Envirement);
+>>>>>>> Stashed changes
         HeightSlider.value = 0;
         Destroy(buildPlatform.Envirement);
         yield return new WaitForSecondsRealtime(00.1f);
@@ -172,16 +179,13 @@ public class GameManager : MonoBehaviour
             Destroy(humen_spwaned);
             humen_spwaned = null;
         }
-        yield return new WaitForSecondsRealtime(00.1f);
-        buildPlatform.CreateEnvirment();
-        yield return new WaitForSecondsRealtime(00.1f);
-        buildPlatform.CreatePlatform();
-        yield return new WaitForSecondsRealtime(00.1f);
-        buildPlatform.SpwanItems();
-        yield return new WaitForSecondsRealtime(00.1f);
 
+      
+        yield return  buildPlatform.CreateEnvirment();
+        yield return  buildPlatform.CreatePlatform();
 
-
+        yield return  buildPlatform.SpwanItems();
+        
 
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);

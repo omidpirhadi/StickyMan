@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using Sirenix.OdinInspector;
 public class BuildPlatform : MonoBehaviour
@@ -11,9 +13,10 @@ public class BuildPlatform : MonoBehaviour
     private GameObject platform_spawned;
 
     private List<GameObject> platformsSpawned = new List<GameObject>();
-    [Button("CreateEnvirment",ButtonSizes.Medium)]
-    public void CreateEnvirment()
+    [Button("CreateEnvirment", ButtonSizes.Medium)]
+    public IEnumerator CreateEnvirment()
     {
+
         Envirement = new GameObject("Envirment");
         platformsSpawned = new List<GameObject>();
         int dis = Levels[CurrentLevel].DistansWallEcheOther;
@@ -48,62 +51,69 @@ public class BuildPlatform : MonoBehaviour
 
             //CreatePlatform(envirment.transform);
         }
-      
+
+        yield return null;
+        
     }
     
     [Button("CreatePlatform", ButtonSizes.Medium)]
-    public void CreatePlatform( )
+    public IEnumerator CreatePlatform( )
     {
-        Vector3 pos_platform = new Vector3();
 
-        int h = Levels[CurrentLevel].Height * 100;
-        float distance = Levels[CurrentLevel].DistansWallEcheOther;
-        float temp_dis = 0;
-        for (int i = 0; i < h; i++)
-        {
-            int rand_pos = UnityEngine.Random.Range(0, 3);
-            pos_platform = new Vector3(3.14f, Levels[CurrentLevel].PadingDown, 0.0f);
-            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h- Levels[CurrentLevel].PadingUp);
-            if (pos_platform.y <h- Levels[CurrentLevel].PadingUp)
+        bool end = false;
+            Vector3 pos_platform = new Vector3();
+
+            int h = Levels[CurrentLevel].Height * 100;
+            float distance = Levels[CurrentLevel].DistansWallEcheOther;
+            float temp_dis = 0;
+            for (int i = 0; i < h; i++)
             {
-                if (rand_pos == 0)
+                int rand_pos = UnityEngine.Random.Range(0, 3);
+                pos_platform = new Vector3(3.14f, Levels[CurrentLevel].PadingDown, 0.0f);
+                pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h - Levels[CurrentLevel].PadingUp);
+                if (pos_platform.y < h - Levels[CurrentLevel].PadingUp)
                 {
-                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
+                    if (rand_pos == 0)
+                    {
+                        pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
 
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
+                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
 
-                    var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
+                        var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
+                    }
+                    else if (rand_pos == 1)
+                    {
+                        pos_platform = new Vector3(0, pos_platform.y, 0.0f);
+                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
+
+                        var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
+                    }
+                    else if (rand_pos == 2)
+                    {
+                        pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
+                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
+
+                        var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
+                    }
+
+
+                    temp_dis += Levels[CurrentLevel].DistancePlatformEachOther;
                 }
-                else if (rand_pos == 1)
-                {
-                    pos_platform = new Vector3(0, pos_platform.y, 0.0f);
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
-
-                    var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
-                }
-                else if (rand_pos == 2)
-                {
-                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
-
-                    var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
-                }
-
-
-                temp_dis += Levels[CurrentLevel].DistancePlatformEachOther;
+                platformsSpawned.Add(platform_spawned);
             }
-            platformsSpawned.Add(platform_spawned);
-        }
+        end = true;
+        yield return new WaitWhile(() => end == false);
     }
     [Button("SpwanItem", ButtonSizes.Medium)]
-    public void SpwanItems()
+    public IEnumerator SpwanItems()
     {
+        bool end = false;
         float offset_y = 0;
         for (int i = 0; i < platformsSpawned.Count; i++)
         {
@@ -134,11 +144,11 @@ public class BuildPlatform : MonoBehaviour
             else
             {
                 var coin_count = (Levels[CurrentLevel].DistancePlatformEachOther - 10) / Levels[CurrentLevel].CoinDistanceEachOther;
-                
+
                 pos_item = pos;
                 if (pos.x > 0)// right
                 {
-                    
+
                     pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
@@ -153,17 +163,20 @@ public class BuildPlatform : MonoBehaviour
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 offset_y = pos_item.y;
-                
+
                 for (int j = 0; j < coin_count; j++)
                 {
                     SpwanCoin(new Vector3(pos_item.x, offset_y, pos_item.z));
                     offset_y += 2.5f;
-                    
+
 
                 }
-                
+
             }
+
         }
+        end = true;
+        yield return new WaitWhile(() => end == false);
     }
   //  [Button("SpwanAmmoBox", ButtonSizes.Medium)]
     public void SpwanBoxAmmo( Vector3 pos)
