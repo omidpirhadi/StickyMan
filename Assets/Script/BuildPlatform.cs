@@ -55,58 +55,60 @@ public class BuildPlatform : MonoBehaviour
         yield return null;
         
     }
-    
+
     [Button("CreatePlatform", ButtonSizes.Medium)]
-    public IEnumerator CreatePlatform( )
+    public IEnumerator CreatePlatform()
     {
 
         bool end = false;
-            Vector3 pos_platform = new Vector3();
+        Vector3 pos_platform = new Vector3();
 
-            int h = Levels[CurrentLevel].Height * 100;
-            float distance = Levels[CurrentLevel].DistansWallEcheOther;
-            float temp_dis = 0;
-            for (int i = 0; i < h; i++)
+        int h = Levels[CurrentLevel].Height * 100;
+        float distance = Levels[CurrentLevel].DistansWallEcheOther;
+        float temp_dis = 0;
+        for (int i = 0; i < h; i++)
+        {
+            int rand_pos = UnityEngine.Random.Range(0, 3);
+            pos_platform = new Vector3(3.14f, Levels[CurrentLevel].PadingDown, 0.0f);
+            pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h - Levels[CurrentLevel].PadingUp);
+            if (pos_platform.y < h - Levels[CurrentLevel].PadingUp)
             {
-                int rand_pos = UnityEngine.Random.Range(0, 3);
-                pos_platform = new Vector3(3.14f, Levels[CurrentLevel].PadingDown, 0.0f);
-                pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_dis), Levels[CurrentLevel].PadingDown, h - Levels[CurrentLevel].PadingUp);
-                if (pos_platform.y < h - Levels[CurrentLevel].PadingUp)
+                if (rand_pos == 0)
                 {
-                    if (rand_pos == 0)
-                    {
-                        pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
+                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
 
-                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
+                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
 
-                        var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
-                    }
-                    else if (rand_pos == 1)
-                    {
-                        pos_platform = new Vector3(0, pos_platform.y, 0.0f);
-                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
-
-                        var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
-                    }
-                    else if (rand_pos == 2)
-                    {
-                        pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
-                        int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
-
-                        var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
-                    }
-
-
-                    temp_dis += Levels[CurrentLevel].DistancePlatformEachOther;
+                    var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
                 }
-                platformsSpawned.Add(platform_spawned);
+                else if (rand_pos == 1)
+                {
+                    pos_platform = new Vector3(0, pos_platform.y, 0.0f);
+                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
+
+                    var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
+                }
+                else if (rand_pos == 2)
+                {
+                    pos_platform = new Vector3((distance - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
+                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
+
+                    var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
+                }
+
+
+                temp_dis += Levels[CurrentLevel].DistancePlatformEachOther;
             }
+            platformsSpawned.Add(platform_spawned);
+
+            
+        }
         end = true;
         yield return new WaitWhile(() => end == false);
     }

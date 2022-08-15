@@ -176,11 +176,11 @@ public class GameManager : MonoBehaviour
             humen_spwaned = null;
         }
 
-      
-        yield return  buildPlatform.CreateEnvirment();
-        yield return  buildPlatform.CreatePlatform();
 
-        yield return  buildPlatform.SpwanItems();
+        yield return StartCoroutine(buildPlatform.CreateEnvirment());
+        yield return StartCoroutine(buildPlatform.CreatePlatform());
+
+        yield return StartCoroutine(buildPlatform.SpwanItems());
         
 
         HeightSlider.gameObject.SetActive(true);
