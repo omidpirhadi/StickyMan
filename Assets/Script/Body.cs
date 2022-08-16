@@ -19,7 +19,7 @@ public class Body : MonoBehaviour
     }
     public void Update()
     {
-        if (rigidbody.velocity.magnitude > 10.0f)
+        if (rigidbody.velocity.magnitude > 20.0f)
         {
             rigidbody.drag = 10;
         }
@@ -28,6 +28,7 @@ public class Body : MonoBehaviour
         {
             rigidbody.drag = 1;
         }
+      //  Debug.Log(rigidbody.velocity);
     }
     public void LateUpdate()
     {
@@ -42,12 +43,20 @@ public class Body : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-      /**  if(collision.collider.tag == "Bullet")
+        if(collision.collider.tag == "Bullet")
         {
-            var f = Vector3.up * collision.relativeVelocity.magnitude;
-            f.z = 0.0f;
-            rigidbody.AddForce(f, ForceMode.Impulse);
-        }*/
+            Debug.Log(rigidbody.velocity.y);
+            var body_velocity = rigidbody.velocity;
+            if (rigidbody.velocity.y <= 0)
+            {
+                body_velocity.y = 500;
+
+                body_velocity.z = 0.0f;
+
+                rigidbody.AddForce(body_velocity, ForceMode.VelocityChange);
+               // Debug.Log("Force UP");
+            }
+        }
     }
 
 }

@@ -177,12 +177,12 @@ public class GameManager : MonoBehaviour
         }
 
 
-        yield return StartCoroutine(buildPlatform.CreateEnvirment());
-        yield return StartCoroutine(buildPlatform.CreatePlatform());
+       StartCoroutine(buildPlatform.CreateEnvirment());
+       StartCoroutine(buildPlatform.CreatePlatform());
 
-        yield return StartCoroutine(buildPlatform.SpwanItems());
-        
+        StartCoroutine(buildPlatform.SpwanItems());
 
+      
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);
         EndGameMenu_ui.SetActive(false);

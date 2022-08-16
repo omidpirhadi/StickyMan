@@ -156,7 +156,7 @@ public class Gun : MonoBehaviour
     {
 
         AmmoCount = 0;
-        transform.localPosition = new Vector3(0f, -11.91f, 10);
+        transform.localPosition = new Vector3(0f, -14.0f, 10);
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;
         AutoMovePlay();

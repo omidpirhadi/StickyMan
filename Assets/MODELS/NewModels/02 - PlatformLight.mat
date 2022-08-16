@@ -10,7 +10,7 @@ Material:
   m_Name: 02 - PlatformLight
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.54901963, g: 0.03137255, b: 0.03137255, a: 1}
-    - _EmissionColor: {r: 1.9880666, g: 1.5522691, b: 0, a: 1}
+    - _Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
+    - _EmissionColor: {r: 2.297397, g: 1.8829645, b: 0.0810846, a: 1}

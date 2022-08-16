@@ -115,7 +115,7 @@ public class BuildPlatform : MonoBehaviour
     [Button("SpwanItem", ButtonSizes.Medium)]
     public IEnumerator SpwanItems()
     {
-        bool end = false;
+        
         float offset_y = 0;
         for (int i = 0; i < platformsSpawned.Count; i++)
         {
@@ -175,10 +175,10 @@ public class BuildPlatform : MonoBehaviour
                 }
 
             }
-
+            yield return null;
         }
-        end = true;
-        yield return new WaitWhile(() => end == false);
+       
+       
     }
   //  [Button("SpwanAmmoBox", ButtonSizes.Medium)]
     public void SpwanBoxAmmo( Vector3 pos)
