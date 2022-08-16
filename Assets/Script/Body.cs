@@ -8,7 +8,7 @@ public class Body : MonoBehaviour
     private new Rigidbody rigidbody;
 //    private Gun gun;
     private GameManager gameManager;
-
+    private Vector3 velocity;
     public void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -30,6 +30,10 @@ public class Body : MonoBehaviour
         }
       //  Debug.Log(rigidbody.velocity);
     }
+    public void FixedUpdate()
+    {
+        velocity = rigidbody.velocity;
+    }
     public void LateUpdate()
     {
         //gameManager.BodyCurrentHeight = transform.position.y;
@@ -45,16 +49,14 @@ public class Body : MonoBehaviour
     {
         if(collision.collider.tag == "Bullet")
         {
-            Debug.Log(rigidbody.velocity.y);
-            var body_velocity = rigidbody.velocity;
-            if (rigidbody.velocity.y <= 0)
+            //Debug.Log(rigidbody.velocity.normalized+"vVSsSs"+velocity.normalized);
+            
+            if (velocity.y <= 0)
             {
-                body_velocity.y = 500;
 
-                body_velocity.z = 0.0f;
 
-                rigidbody.AddForce(body_velocity, ForceMode.VelocityChange);
-               // Debug.Log("Force UP");
+                rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+                Debug.Log("Force UP");
             }
         }
     }
