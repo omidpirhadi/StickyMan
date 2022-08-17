@@ -10,17 +10,26 @@ public class AmmoBox : MonoBehaviour
     public GameObject Effect;
     private GameManager gameManager;
     private bool Isused = false;
-
+    private Transform cam;
     public void Start()
     {
        
         gun = FindObjectOfType<Gun>();
         gameManager = FindObjectOfType<GameManager>();
         gameManager.OnItemRestore += GameManager_OnItemRestore;
-
+        cam = Camera.main.transform;
         Isused = false;
     }
+    public void LateUpdate()
+    {
+        var temp_y = cam.transform.position.y - this.transform.position.y;
+        if (temp_y > 50)
+        {
 
+            //Debug.Log("Des" + gameObject.name);
+            Destroy(this.gameObject);
+        }
+    }
     private void GameManager_OnItemRestore(bool restore)
     {
         if(restore)

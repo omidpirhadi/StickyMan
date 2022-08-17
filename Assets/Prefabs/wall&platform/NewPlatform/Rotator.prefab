@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8764481974433606485}
   - component: {fileID: 8764481974433606484}
   - component: {fileID: 7308523929478846404}
+  - component: {fileID: -5611039249850861413}
   m_Layer: 16
   m_Name: Rotator
   m_TagString: platform
@@ -125,3 +126,15 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-5611039249850861413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764481974433606483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2c8ad85ff805944b6e3196c78c37e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

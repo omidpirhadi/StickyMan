@@ -53,9 +53,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: FontsFree-Net-Royals-Rush
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: 1630731168
   material: {fileID: 3181137643592893352}
-  materialHashCode: 0
+  materialHashCode: -1457329792
   m_Version: 1.1.0
   m_SourceFontFileGUID: c8379a8e9617132489dd98e95373c712
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: c8379a8e9617132489dd98e95373c712,
@@ -2501,4 +2501,4 @@ Material:
     - _VertexOffsetY: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FaceColor: {r: 1, g: 0.65654284, b: 0, a: 1}

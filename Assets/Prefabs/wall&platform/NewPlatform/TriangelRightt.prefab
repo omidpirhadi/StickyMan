@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7135165312890773874}
   - component: {fileID: 2329459653343023859}
   - component: {fileID: 1264040136735760945}
+  - component: {fileID: 477417632523051711}
   m_Layer: 16
   m_Name: TriangelRightt
   m_TagString: platform
@@ -95,3 +96,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1226723149311242300, guid: 7f1295808a6d75b44ab551d932eb2e68, type: 3}
+--- !u!114 &477417632523051711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264040136735760944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2c8ad85ff805944b6e3196c78c37e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

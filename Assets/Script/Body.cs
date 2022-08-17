@@ -45,17 +45,22 @@ public class Body : MonoBehaviour
     }
 
 
+
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.tag == "Bullet")
         {
             //Debug.Log(rigidbody.velocity.normalized+"vVSsSs"+velocity.normalized);
-            
+
+            var current_velocity = rigidbody.velocity;
+            current_velocity.y = 0;
             if (velocity.y <= 0)
             {
 
-
-                rigidbody.AddForce(Vector3.up * collision.relativeVelocity.magnitude, ForceMode.Impulse);
+                rigidbody.velocity = current_velocity;
+                rigidbody.AddForce(Vector3.up * 500, ForceMode.Impulse);
                 Debug.Log("Force UP");
             }
         }

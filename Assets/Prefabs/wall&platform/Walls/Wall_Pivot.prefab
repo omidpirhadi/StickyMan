@@ -519,7 +519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2410240473706012267}
-  - component: {fileID: -8523993069089127331}
+  - component: {fileID: 3740916572551515748}
   m_Layer: 16
   m_Name: Wall_Pivot
   m_TagString: Wall
@@ -556,7 +556,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8523993069089127331
+--- !u!114 &3740916572551515748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2410240473706012264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e94a392fd9cf04db23d223c9714d48, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ef3585df3d3020448ce4210de277a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3819902624464296290

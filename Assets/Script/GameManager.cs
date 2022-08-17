@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     
     public Gun gun;
     public Transform Camera;
+    public float RegenrationWorldInHeight = 950.0f;
     public Material SkyBox;
     public Transform SpwanPlaceHume;
     public List<GameObject> HumenPrefabs;
@@ -78,6 +79,12 @@ public class GameManager : MonoBehaviour
         SetGridantSkyBox();
         SetSliderHeightHumen();
         SetAmmoTextInUI();
+        if(Camera.transform.position.y>RegenrationWorldInHeight)
+        {
+            StartCoroutine(buildPlatform.ShiftEnvirment());
+            RegenrationWorldInHeight += 1000;
+            Debug.Log("Regenration World");
+        }
     }
     public void LevelCompeleted()
     {
@@ -163,9 +170,11 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator LevelSpwan()
     {
-        Camera.transform.position = new Vector3(0, 13.28f, -10);
-
+        RegenrationWorldInHeight = 950f;
+        
+        buildPlatform.Resetvalue();
         HeightSlider.value = 0;
+        Camera.transform.position = new Vector3(0, 13.28f, -10);
         Destroy(buildPlatform.Envirement);
         yield return new WaitForSecondsRealtime(00.1f);
 
@@ -177,7 +186,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-       StartCoroutine(buildPlatform.CreateEnvirment());
+       StartCoroutine(buildPlatform.CreateWalls());
        StartCoroutine(buildPlatform.CreatePlatform());
 
         StartCoroutine(buildPlatform.SpwanItems());
