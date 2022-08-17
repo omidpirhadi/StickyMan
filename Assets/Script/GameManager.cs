@@ -67,17 +67,14 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 
     void LateUpdate()
     {
-
-        SetGridantSkyBox();
-        SetSliderHeightHumen();
+        if (humen_spwaned.transform.position.y > BodyCurrentHeight)
+            BodyCurrentHeight = humen_spwaned.transform.position.y;
+        // SetGridantSkyBox();
+        //  SetSliderHeightHumen();
         SetAmmoTextInUI();
         if(Camera.transform.position.y>RegenrationWorldInHeight)
         {
@@ -116,6 +113,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public int CalculateScore()
+    {
+        int coin_point = CoinCount * 100;
+        int every_1_meter = Mathf.RoundToInt(BodyCurrentHeight * 10.0f);
+        int every_100_meter = Mathf.RoundToInt(BodyCurrentHeight / 100.0f) * 1000;
+
+        int total_score = coin_point + every_1_meter + every_100_meter;
+        return total_score;
+    }
     private void GA_LevelCompeletEvent(int level)
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "CompeletedLevel", level);
@@ -170,6 +176,7 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator LevelSpwan()
     {
+        SetCoinvalue(0);
         RegenrationWorldInHeight = 950f;
         
         buildPlatform.Resetvalue();
