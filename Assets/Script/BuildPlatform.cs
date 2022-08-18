@@ -253,7 +253,7 @@ public class BuildPlatform : MonoBehaviour
             if (i % 100 == 0)
             {
                 var mailstone = Instantiate(Levels[CurrentLevel].MaileStone_Prefab, new Vector3(0, i, 0), Quaternion.identity, Envirement.transform);
-                mailstone.Set_MailStone(i + "M", Color.white);
+                mailstone.Set_MailStone(i + "M", "w");
             }
             
         }
@@ -263,7 +263,7 @@ public class BuildPlatform : MonoBehaviour
        // ShitWallToUP();
          StartCoroutine(CreatePlatform());
          StartCoroutine(SpwanItems());
-        MaileStoneSpwan(0 + (1000 * EnvirmentShiftCount), 1000 + (1000 * EnvirmentShiftCount));
+         MaileStoneSpwan(0 + (1000 * EnvirmentShiftCount), 1000 + (1000 * EnvirmentShiftCount));
         EnvirmentShiftCount++;
         yield return null;
     }

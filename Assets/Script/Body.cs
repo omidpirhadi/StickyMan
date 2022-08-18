@@ -8,7 +8,7 @@ public class Body : MonoBehaviour
     private new Rigidbody rigidbody;
 //    private Gun gun;
     private GameManager gameManager;
-    private Vector3 velocity;
+   public  Vector3 Lastvelocity;
     public void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -32,7 +32,7 @@ public class Body : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        velocity = rigidbody.velocity;
+        Lastvelocity = rigidbody.velocity;
     }
     public void LateUpdate()
     {
@@ -56,7 +56,7 @@ public class Body : MonoBehaviour
 
             var current_velocity = rigidbody.velocity;
             current_velocity.y = 0;
-            if (velocity.y <= 0)
+            if (Lastvelocity.y <= 0)
             {
 
                 rigidbody.velocity = current_velocity;

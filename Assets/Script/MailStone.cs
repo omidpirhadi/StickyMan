@@ -6,12 +6,14 @@ public class MailStone : MonoBehaviour
 {
 
     public Text mailstone_Text;
+    public Material Yellow_color, white_color;
     private Transform cam;
     public void Start()
     {
 
       
         cam = Camera.main.transform;
+
 
     }
     public void LateUpdate()
@@ -25,10 +27,18 @@ public class MailStone : MonoBehaviour
         }
     }
 
-    public void Set_MailStone(string metter, Color c)
+    public void Set_MailStone(string metter, string color)
     {
-        mailstone_Text.text = metter;
-        mailstone_Text.material.color = c;
+        if (color == "w")
+        {
+            mailstone_Text.text = metter;
+            mailstone_Text.material = white_color;
+        }
+        else if(color == "y")
+        {
+            mailstone_Text.text = metter;
+            mailstone_Text.material = Yellow_color;
+        }
      
     }
 }

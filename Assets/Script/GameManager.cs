@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +9,11 @@ using GameAnalyticsSDK;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
+    [SerializeField]
+    public LeaderboardData leaderboard;
     public BuildPlatform buildPlatform;
     public Controller controller;
-    
+
     public Gun gun;
     public Transform Camera;
     public float RegenrationWorldInHeight = 950.0f;
@@ -18,12 +22,15 @@ public class GameManager : MonoBehaviour
     public List<GameObject> HumenPrefabs;
     public ParticleSystem Effect;
 
+    public float TotalScore;
     public int CurrentLevel = 0;
     public float HeightLevel;
     public float BodyCurrentHeight;
     private int CoinCount;
 
+    public TMPro.TMP_Text TotalScore_text;
     public TMPro.TMP_Text Coin_text;
+
     public TMPro.TMP_Text Ammo_text;
     public Slider HeightSlider;
     public GameObject StartMenu_ui;
@@ -37,11 +44,13 @@ public class GameManager : MonoBehaviour
     public GameObject gameoverbox;
     public GameObject winnerbox;
 
-    public  GameObject humen_spwaned;
+    public GameObject humen_spwaned;
     void Awake()
     {
-       // GameAnalytics.Initialize();
-
+        // GameAnalytics.Initialize();
+        leaderboard = new LeaderboardData();
+        leaderboard = LoadLeaderboard("cannonman");
+        TotalScore = leaderboard.score;
     }
     void Start()
     {
@@ -49,43 +58,50 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(LevelSpwan());
         });
-        nextlevel_btn.onClick.AddListener(() => {
+        nextlevel_btn.onClick.AddListener(() =>
+        {
 
             StartCoroutine(LevelSpwan());
         });
 
-        resetlevel_btn.onClick.AddListener(() => {
+        resetlevel_btn.onClick.AddListener(() =>
+        {
             StartCoroutine(LevelReset());
         });
-        exitapp_btn.onClick.AddListener(() => {
+        exitapp_btn.onClick.AddListener(() =>
+        {
 
             Application.Quit();
         });
-        
+
         SetCoinvalue(0);
-       
+
 
     }
 
-   
+
 
     void LateUpdate()
     {
-        if (humen_spwaned.transform.position.y > BodyCurrentHeight)
-            BodyCurrentHeight = humen_spwaned.transform.position.y;
+        if (humen_spwaned != null)
+        {
+            if (humen_spwaned.transform.position.y > BodyCurrentHeight)
+                BodyCurrentHeight = humen_spwaned.transform.position.y;
+        }
         // SetGridantSkyBox();
         //  SetSliderHeightHumen();
-        SetAmmoTextInUI();
-        if(Camera.transform.position.y>RegenrationWorldInHeight)
+
+        if (Camera.transform.position.y > RegenrationWorldInHeight)
         {
             StartCoroutine(buildPlatform.ShiftEnvirment());
             RegenrationWorldInHeight += 1000;
             Debug.Log("Regenration World");
         }
+        SetAmmoTextInUI();
     }
     public void LevelCompeleted()
     {
-       //// GA_LevelCompeletEvent(1);
+        //// GA_LevelCompeletEvent(1);
         Effect.Play();
         EndGameMenu_ui.SetActive(true);
         gameoverbox.SetActive(false);
@@ -94,22 +110,30 @@ public class GameManager : MonoBehaviour
         gun.automove = false;
         Camera.transform.position = new Vector3(0, 13.28f, -10);
 
-        
+
         Camera.GetComponent<CameraFollow>().ready = false;
         Camera.GetComponent<CameraFollow>().target = null;
 
     }
     public void LevelFail()
     {
-       // GA_LevelFailEvent(2);
+        if (BodyCurrentHeight > leaderboard.lastRecord)
+            leaderboard.lastRecord = BodyCurrentHeight;
+
+        TotalScore += CalculateScore();
+        leaderboard.score = TotalScore;
+        TotalScore_text.text = TotalScore.ToString() ;
+        // GA_LevelFailEvent(2);
         EndGameMenu_ui.SetActive(true);
-        gameoverbox.SetActive(true);
-        winnerbox.SetActive(false);
+       // gameoverbox.SetActive(true);
+        //winnerbox.SetActive(false);
         controller.GameStarted = false;
         gun.automove = false;
         Camera.transform.position = new Vector3(0, 13.28f, -10);
         Camera.GetComponent<CameraFollow>().ready = false;
         Camera.GetComponent<CameraFollow>().target = null;
+
+        SaveLeaderboard("cannonman", leaderboard);
 
     }
 
@@ -138,13 +162,13 @@ public class GameManager : MonoBehaviour
     }
     private void HumenShoot()
     {
-       humen_spwaned = Instantiate(HumenPrefabs[0], gun.BulletPlace.position, HumenPrefabs[0].transform.rotation);
+        humen_spwaned = Instantiate(HumenPrefabs[0], gun.BulletPlace.position, HumenPrefabs[0].transform.rotation);
         humen_spwaned.GetComponent<Rigidbody>().AddForce(Vector3.up * 100, ForceMode.Impulse);
 
     }
     private void SetGridantSkyBox()
     {
-       if (humen_spwaned)
+        if (humen_spwaned)
         {
             BodyCurrentHeight = humen_spwaned.transform.position.y;
             var amount = BodyCurrentHeight / HeightLevel;
@@ -164,11 +188,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void  SetCoinvalue(int c)
+    public void SetCoinvalue(int c)
     {
         CoinCount += c;
         Coin_text.text = CoinCount.ToString();
-      //  Debug.Log("1");
+        //  Debug.Log("1");
     }
     private void SetAmmoTextInUI()
     {
@@ -178,7 +202,7 @@ public class GameManager : MonoBehaviour
     {
         SetCoinvalue(0);
         RegenrationWorldInHeight = 950f;
-        
+
         buildPlatform.Resetvalue();
         HeightSlider.value = 0;
         Camera.transform.position = new Vector3(0, 13.28f, -10);
@@ -193,17 +217,17 @@ public class GameManager : MonoBehaviour
         }
 
 
-       StartCoroutine(buildPlatform.CreateWalls());
-       StartCoroutine(buildPlatform.CreatePlatform());
+        StartCoroutine(buildPlatform.CreateWalls());
+        StartCoroutine(buildPlatform.CreatePlatform());
 
         StartCoroutine(buildPlatform.SpwanItems());
 
-      
+
         HeightSlider.gameObject.SetActive(true);
         StartMenu_ui.SetActive(false);
         EndGameMenu_ui.SetActive(false);
-       
-        
+
+
         yield return new WaitForSecondsRealtime(00.1f);
 
         controller.GameStarted = true;
@@ -222,7 +246,7 @@ public class GameManager : MonoBehaviour
         HeightSlider.value = 0;
         CoinCount = 0;
         SetCoinvalue(0);
-        
+
 
 
         yield return new WaitForSecondsRealtime(00.1f);
@@ -233,7 +257,7 @@ public class GameManager : MonoBehaviour
             humen_spwaned = null;
         }
 
-        
+
 
         yield return new WaitForSecondsRealtime(00.1f);
 
@@ -251,9 +275,59 @@ public class GameManager : MonoBehaviour
         gun.GunReady();
         SetAmmoTextInUI();
         Camera.GetComponent<CameraFollow>().ready = true;
-        
+
     }
-    private Action <bool>itemrestore;
+
+    #region Read and Write File
+    public bool ExistTokenFile(string FileName)
+    {
+        bool find = false;
+        if (File.Exists(Application.persistentDataPath + "//" + FileName + ".json"))
+        {
+            find = true;
+        }
+        return find;
+    }
+    private void SaveLeaderboard(string FileName, LeaderboardData data)
+    {
+        var json_data = JsonUtility.ToJson(data);
+        if (File.Exists(Application.persistentDataPath + "//" + FileName + ".json"))
+        {
+            File.Delete(Application.persistentDataPath + "//" + FileName + ".json");
+        }
+        File.WriteAllText(Application.persistentDataPath + "//" + FileName + ".json", json_data);
+        Debug.Log("Data Saved");
+    }
+    public LeaderboardData LoadLeaderboard(string FileName)
+    {
+        LeaderboardData data = new  LeaderboardData();
+        if (File.Exists(Application.persistentDataPath + "//" + FileName + ".json"))
+        {
+            var j_data = File.ReadAllText(Application.persistentDataPath + "//" + FileName + ".json");
+            data = JsonUtility.FromJson<LeaderboardData>(j_data);
+
+        }
+        Debug.Log("Data Loaded");
+        return data;
+    }
+    public void DeleteToken(string FileName)
+    {
+
+        if (File.Exists(Application.persistentDataPath + "//" + FileName + ".json"))
+        {
+            File.Delete(Application.persistentDataPath + "//" + FileName + ".json");
+        }
+
+    }
+
+
+    
+    #endregion
+
+    #region Evenets
+
+
+    private Action<bool> itemrestore;
 
     public event Action<bool> OnItemRestore
     {
@@ -263,9 +337,9 @@ public class GameManager : MonoBehaviour
     protected void Handler_OnItemRestore(bool restore)
 
     {
-        if(itemrestore !=null)
+        if (itemrestore != null)
         {
-            itemrestore(restore); 
+            itemrestore(restore);
 
         }
     }
@@ -285,4 +359,12 @@ public class GameManager : MonoBehaviour
 
         }
     }
+    #endregion
+}
+[Serializable]
+public struct LeaderboardData
+{
+    public float score;
+    public float lastRecord;
+
 }
