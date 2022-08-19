@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         //target = GameObject.FindGameObjectWithTag("Humen").transform;
         FirstPosCam = transform.position;
         platform = FindObjectOfType<BuildPlatform>();
-        Y_max = (platform.Levels[platform.CurrentLevel].Height * 100) - Paddingup;
+      //  Y_max = (platform.Levels[platform.CurrentLevel].Height * 100) - Paddingup;
     }
 
     // Update is called once per frame

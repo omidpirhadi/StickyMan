@@ -7,12 +7,13 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
+    public Diaco.Cannonman.UI.GameHUD GameHUD_UI;
     public GameObject HumenPrefabs;
     public ParticleSystem CannonShotEffect;
     public float MaxCapacityAmmo = 100;
     public float AmmoCount = 50;
-    public Image CapasityGun_image;
-    public Text CapacityGun_text;
+  ///  public Image CapasityGun_image;
+  //  public Text CapacityGun_text;
     public Rigidbody Bullet_prefab;
     public Transform BulletPlace;
     public float PowerFire;
@@ -33,7 +34,7 @@ public class Gun : MonoBehaviour
         settingUI.OnChangeSetting += OnChangeSetting;
         audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
-       
+       // GameHUD_UI = FindObjectOfType<Diaco.Cannonman.UI.GameHUD>();
      //   AutoChangePosition();
        
     }
@@ -74,13 +75,16 @@ public class Gun : MonoBehaviour
         {
             if (AmmoCount > 0)
             {
-                var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
-             
-                b.AddForce(f, forceMode);
-                Ammo(-1);
                 CannonShotEffect.Play(true);
                 audioSource.Play();
-            }
+                var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
+
+                b.AddForce(f, forceMode);
+
+
+
+                Ammo(-1);
+            } 
 
         }
         else
@@ -90,12 +94,11 @@ public class Gun : MonoBehaviour
     }
     public void Ammo(int a)
     {
-        AmmoCount += a;
-        if (AmmoCount > 0 && AmmoCount <= MaxCapacityAmmo)
+        
+        if (AmmoCount >= 0 && AmmoCount <= MaxCapacityAmmo)
         {
-            float step = AmmoCount / MaxCapacityAmmo;
-            CapasityGun_image.fillAmount = step;
-            CapacityGun_text.text = "Ammo:" + AmmoCount.ToString();
+            AmmoCount += a;
+            GameHUD_UI.Ammo_txt.text = AmmoCount.ToString();
         }
     }
 

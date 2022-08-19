@@ -8,17 +8,17 @@ public class AmmoBox : MonoBehaviour
     public int Capacity;
     public Gun gun;
     public GameObject Effect;
-    private GameManager gameManager;
+    public Diaco.Cannonman.UI.GameHUD gameHUD_ui;
     private bool Isused = false;
     private Transform cam;
     public void Start()
     {
        
         gun = FindObjectOfType<Gun>();
-        gameManager = FindObjectOfType<GameManager>();
-        gameManager.OnItemRestore += GameManager_OnItemRestore;
+        gameHUD_ui = FindObjectOfType<Diaco.Cannonman.UI.GameHUD>();
+       
         cam = Camera.main.transform;
-        Isused = false;
+       // Isused = false;
     }
     public void LateUpdate()
     {
@@ -30,24 +30,22 @@ public class AmmoBox : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void GameManager_OnItemRestore(bool restore)
-    {
-        if(restore)
-        {
-            Isused = false;
-            Effect.SetActive(true);
-        }
-    }
+
 
     private void OnTriggerEnter(Collider t)
     {
+        if (gameHUD_ui == null)
+        {
+            gameHUD_ui = FindObjectOfType<Diaco.Cannonman.UI.GameHUD>();
+        }
         if (t.tag == "Body" && Isused == false)
         {
-            Isused = true;
-             Effect.SetActive(false);
+            if (gameHUD_ui)
+                gameHUD_ui.SetAmmoText();
+            Effect.SetActive(false);
             gun.Ammo(+Capacity);
-            
-           
-        }
+
+            Destroy(this.gameObject);
+        } 
     }
 }

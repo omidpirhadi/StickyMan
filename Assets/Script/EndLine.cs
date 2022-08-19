@@ -29,15 +29,16 @@ public class EndLine : MonoBehaviour
             {
 
                
-                gameManager.LevelCompeleted();
+               //// gameManager.LevelCompeleted();
                 Debug.Log("Winner");
             }
             else
             {
-        
 
-                gameManager.LevelFail();
-                Debug.Log("LOSER");
+
+                gameManager.CompeletRecord();
+
+                Debug.Log("CompeletRecord");
             }
         }
     }

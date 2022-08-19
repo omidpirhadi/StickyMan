@@ -17,15 +17,16 @@ public class Controller : MonoBehaviour
     private Vector3 firstTouch;
     private Vector3 secondTouch;
     public bool GameStarted = false;
+ 
     void Start()
     {
-
+        
     }
 
     
     void Update()
     {
-        if (GameStarted)
+        if (GameStarted )
             Touch2();
     }
 

@@ -6,16 +6,16 @@ using UnityEngine;
 public class CoinBox : MonoBehaviour
 {
     public int Capacity;
-    public GameManager gameManager;
-    
+    public Diaco.Cannonman.UI.GameHUD gameHUD_ui;
+
     public GameObject Effect;
-    private bool Isused = false;
+
     private Transform cam;
     public void Start()
     {
 
-        gameManager = FindObjectOfType<GameManager>();
-        gameManager.OnItemRestore += GameManager_OnItemRestore;
+
+
         cam = Camera.main.transform;
 
     }
@@ -29,25 +29,24 @@ public class CoinBox : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void GameManager_OnItemRestore(bool restore)
-    {
-        if (restore)
-        {
-            Isused = false;
-            Effect.SetActive(true);
-        }
-    }
+
     private void OnTriggerEnter(Collider t)
     {
-        if (t.tag == "Body" && Isused == false)
+        if (gameHUD_ui == null)
         {
-            Isused = true;
-            gameManager.SetCoinvalue(+1);
-            Effect.SetActive(false);
-
+            gameHUD_ui = FindObjectOfType<Diaco.Cannonman.UI.GameHUD>();
         }
+        if (t.tag == "Body")
+        {
+            Effect.SetActive(false);
+            if (gameHUD_ui)
+                gameHUD_ui.SetCoinvalue(+1);
+
+            Destroy(this.gameObject);
+        }
+
     }
 
 
-  
+
 }

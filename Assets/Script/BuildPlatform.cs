@@ -12,6 +12,7 @@ public class BuildPlatform : MonoBehaviour
     public int CurrentLevel;
     public List<LEVEL> Levels;
     public GameObject Envirement;
+    public GameManager gameManager;
     private GameObject platform_spawned;
 
   
@@ -69,6 +70,7 @@ public class BuildPlatform : MonoBehaviour
             //CreatePlatform(envirment.transform);
         }
         MaileStoneSpwan(0 + (1000 * EnvirmentShiftCount), 1000 + (1000 * EnvirmentShiftCount));
+        MaileStoneLastClimbSpwan(gameManager.leaderboard.lastHeightRecord);
         EnvirmentShiftCount++;
         yield return null;
 
@@ -258,6 +260,14 @@ public class BuildPlatform : MonoBehaviour
             
         }
     }
+    private void MaileStoneLastClimbSpwan(float y)
+    {
+        if (y > 100.0f)
+        {
+            var mailstone = Instantiate(Levels[CurrentLevel].MaileStoneLastClimb_Prefab, new Vector3(0, y, 0), Quaternion.identity, Envirement.transform);
+        }
+    
+    }
     public IEnumerator ShiftEnvirment()
     {
        // ShitWallToUP();
@@ -322,6 +332,8 @@ public struct LEVEL
     public GameObject EndLine_prefab;
     [BoxGroup("Items Settings")]
     public MailStone MaileStone_Prefab;
+    [BoxGroup("Items Settings")]
+    public MailStone MaileStoneLastClimb_Prefab;
 }
 [Serializable]
 public struct Platform
