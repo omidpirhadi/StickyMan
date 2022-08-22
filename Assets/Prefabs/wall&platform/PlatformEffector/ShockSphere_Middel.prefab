@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44088e735223a9442bc64aa0dc6fc8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PowerPlatform: 50
+  PowerPlatform: 20
   WithNormal: 1
 --- !u!136 &5406413912959411767
 CapsuleCollider:

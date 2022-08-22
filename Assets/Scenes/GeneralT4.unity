@@ -153,7 +153,7 @@ RectTransform:
   m_Children:
   - {fileID: 1100152973}
   m_Father: {fileID: 1139738903}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.26467654, y: 0.16018753}
   m_AnchorMax: {x: 0.72732353, y: 0.30820832}
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6332486, b: 0.3443396, a: 1}
+  m_Color: {r: 1, g: 0.34509802, b: 0.9606372, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1431,36 +1431,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432669039}
   m_CullTransparentMesh: 0
---- !u!21 &452371694
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 6
-    m_Colors: []
 --- !u!1 &472727133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,7 +2189,7 @@ MonoBehaviour:
         type: 3}
       Scale: {x: 1.5, y: 1.5, z: 30}
       UseInEnvirment: 0
-    - platform_prefab: {fileID: 6547323538082398582, guid: 7a92df72ec17d3f4ea5b960aaab12818,
+    - platform_prefab: {fileID: 3909941909503061892, guid: c23fd29875f3b004ba7445b91babc152,
         type: 3}
       Scale: {x: -1.4, y: -3.4, z: -1.4}
       UseInEnvirment: 0
@@ -2762,7 +2732,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139738903}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23, y: 0.3916979}
   m_AnchorMax: {x: 0.764883, y: 0.45700002}
@@ -2969,13 +2939,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1689661568}
-  m_RootOrder: 0
+  m_Father: {fileID: 1139738903}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.9836426, y: -4.697998}
-  m_SizeDelta: {x: -1.118988, y: 1.4197235}
+  m_AnchorMin: {x: 0.23, y: 0.646}
+  m_AnchorMax: {x: 0.78400004, y: 0.79060423}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &836955822
 MonoBehaviour:
@@ -3026,10 +2996,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58
+  m_fontSize: 62.15
   m_fontSizeBase: 58
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3062,7 +3032,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -0.47848892, z: 0.7306061, w: 0.945549}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3521,7 +3491,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0}
+  m_BackGroundColor: {r: 0.3773585, g: 0.36845854, b: 0.36845854, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -8592,7 +8562,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 452371694}
+  - {fileID: 1723172900}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8685,6 +8655,36 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1043821907
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Line 3D Transparent [CAP_ROUND] (instance)
+  m_Shader: {fileID: 4800000, guid: 79601a6344eda2d4b91e6b821c7b0b88, type: 3}
+  m_ShaderKeywords: CAP_ROUND
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 6
+    m_Colors: []
 --- !u!1 &1075893910
 GameObject:
   m_ObjectHideFlags: 0
@@ -13589,6 +13589,7 @@ RectTransform:
   - {fileID: 706845997}
   - {fileID: 1617900237}
   - {fileID: 1689661568}
+  - {fileID: 836955821}
   - {fileID: 78792569}
   - {fileID: 1567050245}
   - {fileID: 800427736}
@@ -14350,7 +14351,7 @@ RectTransform:
   m_Children:
   - {fileID: 1476277798}
   m_Father: {fileID: 1139738903}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.010676505, y: 0.9023021}
   m_AnchorMax: {x: 0.20567651, y: 0.9921875}
@@ -14467,7 +14468,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139738903}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23, y: 0.4294896}
   m_AnchorMax: {x: 0.764883, y: 0.49339584}
@@ -14673,8 +14674,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 836955821}
+  m_Children: []
   m_Father: {fileID: 1139738903}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14862,7 +14862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2007022335}
+  - {fileID: 1043821907}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14905,6 +14905,36 @@ Transform:
   m_Father: {fileID: 1016864106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1723172900
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 6
+    m_Colors: []
 --- !u!1 &1727940082
 GameObject:
   m_ObjectHideFlags: 0
@@ -15447,36 +15477,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828471441}
   m_CullTransparentMesh: 0
---- !u!21 &2007022335
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Line 3D Transparent [CAP_ROUND] (instance)
-  m_Shader: {fileID: 4800000, guid: 79601a6344eda2d4b91e6b821c7b0b88, type: 3}
-  m_ShaderKeywords: CAP_ROUND
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 6
-    m_Colors: []
 --- !u!1 &2008851604
 GameObject:
   m_ObjectHideFlags: 0

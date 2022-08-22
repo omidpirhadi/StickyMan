@@ -18,13 +18,13 @@ namespace Diaco.Cannonman.UI
         private GameManager gameManager;
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+           /* if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Time.timeScale = 1;
                 FindObjectOfType<Controller>().GameStarted = false;
                 GameHUD_UI.Show(true);
                 Show(true);
-            }
+            }*/
         }
         private void OnEnable()
         {
