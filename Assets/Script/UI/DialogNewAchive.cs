@@ -14,7 +14,7 @@ namespace Diaco.Cannonman.UI
         private Tween DelayCall_tw;
         public void SetContext(string context)
         {
-            Dialog_txt.DOText(context, AnimationTextDuration, true, ScrambleMode.Uppercase);
+            Dialog_txt.DOText(context, AnimationTextDuration, true, ScrambleMode.Numerals);
             DelayCall_tw.Kill();
         }
         public void Show(bool show)

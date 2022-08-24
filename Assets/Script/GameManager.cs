@@ -14,10 +14,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public LeaderboardData leaderboard;
     public Transform Camera;
+
     public BuildPlatform buildPlatform;
     public Controller controller;
-    public Gun gun;
-    
+
+    public Gun Cannon_Gun;
+  //  public Gun M24_Gun;
+
     public float RegenrationWorldInHeight = 950.0f;
     public Material SkyBox;
     
@@ -82,7 +85,8 @@ public class GameManager : MonoBehaviour
         EndGameMenu_UI.Show(true);
 
         controller.GameStarted = false;
-        gun.automove = false;
+        Cannon_Gun.automove = false;
+      
         Camera.transform.position = new Vector3(0, 14f, -10);
         Camera.GetComponent<CameraFollow>().ready = false;
         Camera.GetComponent<CameraFollow>().target = null;
@@ -152,20 +156,29 @@ public class GameManager : MonoBehaviour
         GameHUD_UI.Show(true);
 
         controller.GameStarted = true;
-        gun.GunReady();
-
+        Cannon_Gun.GunReady();
+        
         Camera.GetComponent<CameraFollow>().ready = true;
     }
    
     private void AchivmentHeight()
     {
-        if(BodyCurrentHeight> leaderboard.AchiveHeight+100)
+        if(BodyCurrentHeight> leaderboard.AchiveHeight+500)
         {
-            DialogNewAchive_UI.SetContext((leaderboard.AchiveHeight + 100).ToString());
+            DialogNewAchive_UI.SetContext((leaderboard.AchiveHeight + 500).ToString());
             DialogNewAchive_UI.Show(true);
             leaderboard.AchiveHeight += 100;
             SaveLeaderboard("cannonman");
         }
+    }
+
+    public void ChangeGunToM24()
+    {
+
+    }
+    public void ChangeGunToCannon()
+    {
+
     }
 
     #region Read and Write File

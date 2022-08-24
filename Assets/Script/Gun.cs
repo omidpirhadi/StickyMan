@@ -7,21 +7,24 @@ using Sirenix.OdinInspector;
 [RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour
 {
+    public bool GunM24 = false;
     public Diaco.Cannonman.UI.GameHUD GameHUD_UI;
     public GameObject HumenPrefabs;
     public ParticleSystem CannonShotEffect;
+    public ParticleSystem M24ShotEffect;
     public float MaxCapacityAmmo = 100;
     public float AmmoCount = 50;
   ///  public Image CapasityGun_image;
   //  public Text CapacityGun_text;
     public Rigidbody Bullet_prefab;
     public Transform BulletPlace;
+    public Transform BulletPlace2;
     public float PowerFire;
     public ForceMode forceMode;
     public float SpeedChangePosition = 0.5f;
-    private new Rigidbody rigidbody;
-    private Tween autoposition;
-    private SettingUI settingUI;
+   /// private new Rigidbody rigidbody;
+  //  private Tween autoposition;
+  //  private SettingUI settingUI;
     private int dir = -1;
     public bool automove = false;
     private AudioSource audioSource;
@@ -30,8 +33,8 @@ public class Gun : MonoBehaviour
    // public bool IsGunReady = false;
     public void Start()
     {
-        settingUI = FindObjectOfType<SettingUI>();
-        settingUI.OnChangeSetting += OnChangeSetting;
+      ////  settingUI = FindObjectOfType<SettingUI>();
+      ///  settingUI.OnChangeSetting += OnChangeSetting;
         audioSource = GetComponent<AudioSource>();
         gameManager = FindObjectOfType<GameManager>();
        // GameHUD_UI = FindObjectOfType<Diaco.Cannonman.UI.GameHUD>();
@@ -61,11 +64,11 @@ public class Gun : MonoBehaviour
             }
         
     }
-    private void OnChangeSetting()
+   /* private void OnChangeSetting()
     {
         
         PowerFire = settingUI.powergun;
-    }
+    }*/
 
     public void Fire(Vector3 force, float power)
     {
@@ -75,13 +78,27 @@ public class Gun : MonoBehaviour
         {
             if (AmmoCount > 0)
             {
-                CannonShotEffect.Play(true);
-                audioSource.Play();
-                var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
+                if (GunM24)
+                {
+                    M24ShotEffect.Play(true);
+                    audioSource.Play();
+                    var a = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
+                    var b = Instantiate(Bullet_prefab, BulletPlace2.position, Quaternion.identity);
+                    a.AddForce(f, forceMode);
+                    b.AddForce(f, forceMode);
 
-                b.AddForce(f, forceMode);
+                }
+                else
 
+                {
+                    CannonShotEffect.Play(true);
+                    audioSource.Play();
+                    var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
 
+                    b.AddForce(f, forceMode);
+
+                }
+            
 
                 Ammo(-1);
             } 
@@ -102,36 +119,8 @@ public class Gun : MonoBehaviour
         }
     }
 
-   /* public void ChangePosition(Vector3 current, Vector3 last ,float sensivity)
-    {
+
     
-
-        var pos = this.transform.localPosition;
-        var dir = (last - current).normalized;
-        pos.x += -dir.x * sensivity;
-        this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
-
-    }*/
-   /* public void ChangePositionWithSlider(float x, float sensivity)
-    {
-
-
-        var pos = this.transform.localPosition;
-       
-        pos.x = x * sensivity;
-        this.transform.localPosition = new Vector3(Mathf.Clamp(pos.x, -5, 5), pos.y, pos.z);
-
-    }*/
-    
-   /* public void AutoChangePosition()
-    {
-       autoposition =  this.transform.DOMoveX(-5, SpeedChangePosition).SetEase(Ease.Linear).OnComplete(() => {
-            this.transform.DOMoveX(+5, SpeedChangePosition).SetEase(Ease.Linear).OnComplete(() => { AutoChangePosition(); });
-        });
-        
-        
-    }*/
-    [Button("KillAutoMove",ButtonSizes.Medium)]
     public void  AutoMoveKill()
 
     {
@@ -139,7 +128,7 @@ public class Gun : MonoBehaviour
         automove = false;
     //    Debug.Log("AutoPlayKill");
     }
-    [Button("PlayAutoMove", ButtonSizes.Medium)]
+   
     public void AutoMovePlay()
 
     {
@@ -154,7 +143,7 @@ public class Gun : MonoBehaviour
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         this.transform.rotation = Quaternion.Euler(0f, 0f, angle - 90);
     }
-    [Button("GunReady", ButtonSizes.Medium)]
+ 
     public void GunReady()
     {
 

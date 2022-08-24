@@ -45,8 +45,8 @@ namespace Diaco.Cannonman.UI
                 Show(false);
             });
 
-            Score_txt.DOText(socer_current_record.ToString(), SpeedAnimationText, true, ScrambleMode.Uppercase);
-            YourRecord_txt.DOText(Mathf.RoundToInt(gameManager.BodyCurrentHeight).ToString(), SpeedAnimationText, true, ScrambleMode.Uppercase);
+            Score_txt.DOText(socer_current_record.ToString(), SpeedAnimationText, true, ScrambleMode.Numerals);
+            YourRecord_txt.DOText(Mathf.RoundToInt(gameManager.BodyCurrentHeight).ToString(), SpeedAnimationText, true, ScrambleMode.Numerals);
            
             gameManager.SaveLeaderboard("cannonman");
         }
