@@ -1,0 +1,323 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BuildPlatform
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: ccd174a2a1f1a7342823623198dc0b52,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: CurrentLevel
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].Height
+    value: 10
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].DistansWallEcheOther
+    value: 6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].Wall_prefab
+    value: 
+    objectReference: {fileID: 3740916572551515748, guid: d9594a47baecbea42b851783cbb2294a,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].DistancePlatformEachOther
+    value: 25
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].PadingDown
+    value: 50
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].PadingUp
+    value: 20
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].Offset_X
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[0].platform_prefab
+    value: 
+    objectReference: {fileID: 8767691744211617399, guid: ecc87022a18d41348a356309fb99cf4f,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[0].Scale.x
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[0].Scale.y
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[0].Scale.z
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[0].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[1].platform_prefab
+    value: 
+    objectReference: {fileID: 9092856634383458918, guid: e467f0430fda3d8419a8bbda6f758a28,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[1].Scale.x
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[1].Scale.y
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[1].Scale.z
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].LeftPlatform.Array.data[1].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.size
+    value: 5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[0].platform_prefab
+    value: 
+    objectReference: {fileID: 2090195645487241377, guid: c440cfe96c0122f4bb16dddeb1b471d4,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[0].Scale.x
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[0].Scale.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[0].Scale.z
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[0].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[1].platform_prefab
+    value: 
+    objectReference: {fileID: 2090195645487241377, guid: 576d47bdb14650446bcfa34122a75fa8,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[1].Scale.x
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[1].Scale.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[1].Scale.z
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[1].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[2].platform_prefab
+    value: 
+    objectReference: {fileID: 3024760215878035544, guid: 8e1c4ae4db3f2e84299bd603c8326578,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[2].Scale.x
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[2].Scale.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[2].Scale.z
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[2].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[3].platform_prefab
+    value: 
+    objectReference: {fileID: 3024760215878035544, guid: 3ed91ea0a03a4db4a85a01187eb141de,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[3].Scale.x
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[3].Scale.y
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[3].Scale.z
+    value: 0.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[3].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[4].platform_prefab
+    value: 
+    objectReference: {fileID: 479035197973088898, guid: b7d6da4b045759c4b8709cc973a3697c,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[4].Scale.x
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[4].Scale.y
+    value: 8
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[4].Scale.z
+    value: 0.6
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MedillePlatform.Array.data[4].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[0].platform_prefab
+    value: 
+    objectReference: {fileID: 1100404459976936234, guid: 739e66a70cc7bb24d9b21ad176e4c223,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[0].Scale.x
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[0].Scale.y
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[0].Scale.z
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[0].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[1].platform_prefab
+    value: 
+    objectReference: {fileID: 9094828478583564507, guid: a758983550d030f4aacd3e8ea0661d2e,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[1].Scale.x
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[1].Scale.y
+    value: 1.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[1].Scale.z
+    value: 30
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RightPlatform.Array.data[1].UseInEnvirment
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].DistanceItemFromPlatform.x
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].DistanceItemFromPlatform.y
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].DistanceItemFromPlatform.z
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].AmmoBox_prefab
+    value: 
+    objectReference: {fileID: 7378916383288482894, guid: 0450fe8413138484088a7a9ae36b4761,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].CoinBox_prefab
+    value: 
+    objectReference: {fileID: 7378916383288482894, guid: a1e6749dc979e8f41a81008e3356b6c2,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].Abilitybox
+    value: 
+    objectReference: {fileID: 7378916383288482894, guid: 81decac8256cf3b41a1346144b74b163,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].RepeatCoinBox
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].CoinDistanceEachOther
+    value: 2.5
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].EndLine_prefab
+    value: 
+    objectReference: {fileID: 4084316662932306480, guid: 93e9e4f8b615856469823ab9f9eb684c,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MaileStone_Prefab
+    value: 
+    objectReference: {fileID: 4906375707233714099, guid: 55f490ffb493e284a97d5f38cb2d6775,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Levels.Array.data[0].MaileStoneLastClimb_Prefab
+    value: 
+    objectReference: {fileID: 4906375707233714099, guid: 7c9e3afd16fca5340b15d0ef1f619026,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: Envirement
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: gameManager
+    value: 
+    objectReference: {fileID: 0}

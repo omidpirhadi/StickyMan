@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlatformHealth : MonoBehaviour
 {
     public float Health = 100;
-    public List<GameObject> Addtionalpart;
-    private RayFire.RayfireRigid rayfire;
-
+    public new  MeshRenderer renderer;
+   
+    public GameObject RayFired_Gameobject;
+    public List<GameObject> Additionl = new List<GameObject>();
     private void Start()
     {
-        rayfire = GetComponent<RayFire.RayfireRigid>();
+       
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,13 +25,14 @@ public class PlatformHealth : MonoBehaviour
             }
             else
             {
-                Addtionalpart.ForEach((e) => {
-                    e.AddComponent<Rigidbody>().AddForce(UnityEngine.Random.onUnitSphere * 10, ForceMode.Impulse);
-                    
+                GetComponent<Collider>().enabled = false;
+                renderer.enabled = false;
+                Additionl.ForEach(e => {
+                    e.AddComponent<Rigidbody>().AddForce(UnityEngine.Random.insideUnitSphere * 20, ForceMode.Impulse);
                 });
-                rayfire.Initialize();
-                rayfire.Activate();
-                rayfire.Demolish();
+                RayFired_Gameobject.SetActive(true);
+                
+                Destroy(this, 5);
                 Debug.Log("PlatformCracked!");
             }
 
