@@ -30,7 +30,7 @@ public class EndLine : MonoBehaviour
 
                
                //// gameManager.LevelCompeleted();
-                Debug.Log("Winner");
+             //   Debug.Log("Winner");
             }
             else
             {
@@ -38,7 +38,7 @@ public class EndLine : MonoBehaviour
 
                 gameManager.CompeletRecord();
 
-                Debug.Log("CompeletRecord");
+              //  Debug.Log("CompeletRecord");
             }
         }
     }

@@ -78,26 +78,15 @@ public class Gun : MonoBehaviour
         {
             if (AmmoCount > 0)
             {
-                if (GunM24)
-                {
-                    M24ShotEffect.Play(true);
-                    audioSource.Play();
-                    var a = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
-                    var b = Instantiate(Bullet_prefab, BulletPlace2.position, Quaternion.identity);
-                    a.AddForce(f, forceMode);
-                    b.AddForce(f, forceMode);
-
-                }
-                else
-
-                {
+ 
+           
                     CannonShotEffect.Play(true);
                     audioSource.Play();
                     var b = Instantiate(Bullet_prefab, BulletPlace.position, Quaternion.identity);
 
                     b.AddForce(f, forceMode);
 
-                }
+                
             
 
                 Ammo(-1);
@@ -107,6 +96,7 @@ public class Gun : MonoBehaviour
         else
         {
             HumenShoot(f);
+           
         }
     }
     public void Ammo(int a)
@@ -152,7 +142,7 @@ public class Gun : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;
         AutoMovePlay();
-        Ammo(50);
+        Ammo(20);
         firstShot = true;
        // IsGunReady = true;
     }

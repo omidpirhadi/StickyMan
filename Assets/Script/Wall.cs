@@ -5,10 +5,11 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     private Transform cam;
-
+  
     void Start()
     {
         cam = Camera.main.transform;
+     
     }
 
 

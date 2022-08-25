@@ -172,7 +172,7 @@ public class BuildPlatform : MonoBehaviour
         for (int i = index; i < platformsSpawned.Count; i++)
         {
 
-            int rand_chance_item = UnityEngine.Random.Range(0, 2); // 0 = ammo_box,  1 = coin_box//
+            int rand_chance_item = UnityEngine.Random.Range(0, 3); // 0 = ammo_box,  1 = ability 2 = coin_box//
             var pos = platformsSpawned[i].transform.position;
             Vector3 pos_item = new Vector3();
             if (rand_chance_item == 0)
@@ -195,8 +195,29 @@ public class BuildPlatform : MonoBehaviour
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 SpwanBoxAmmo(pos + pos_item);
-            }
-            else
+            }/// ammo
+            else if (rand_chance_item == 1)
+            {
+
+                if (pos.x > 0)// right
+                {
+
+                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                else if (pos.x < 0) // left
+                {
+                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                else if (pos.x == 0)// middle
+                {
+                    pos_item.x = 0;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                SpwanBoxAbility(pos + pos_item);
+            }/// ability
+            else if (rand_chance_item == 2)
             {
                 var coin_count = (Levels[CurrentLevel].DistancePlatformEachOther - 10) / Levels[CurrentLevel].CoinDistanceEachOther;
 
@@ -227,7 +248,7 @@ public class BuildPlatform : MonoBehaviour
 
                 }
 
-            }
+            } // coin
             yield return null;
 
             //  Debug.Log("ITEM");
@@ -235,6 +256,12 @@ public class BuildPlatform : MonoBehaviour
         }
 
         item_shift++;
+    }
+    private void SpwanBoxAbility(Vector3 pos)
+    {
+
+        Instantiate(Levels[CurrentLevel].Abilitybox, pos, Levels[CurrentLevel].AmmoBox_prefab.transform.rotation, Envirement.transform);
+
     }
     private void SpwanBoxAmmo(Vector3 pos)
     {
@@ -320,7 +347,10 @@ public struct LEVEL
     public GameObject AmmoBox_prefab;
     [BoxGroup("Items Settings")]
     public GameObject CoinBox_prefab;
+
     [BoxGroup("Items Settings")]
+    public GameObject Abilitybox;
+     [BoxGroup("Items Settings")]
     public int RepeatCoinBox;
     [BoxGroup("Items Settings")]
     public float CoinDistanceEachOther;

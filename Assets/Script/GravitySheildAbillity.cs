@@ -6,16 +6,30 @@ public class GravitySheildAbillity : MonoBehaviour
 {
     public ParticleSystem GravityShhieldEffect;
     public EndLine endLine;
-
+    public float Duration = 5;
     void OnEnable()
     {
-        GravityShhieldEffect.Play(true);
-        endLine.gameObject.SetActive(false);
+        ActiveAbility(true);
+        
+       
     }
-    void OnDisable()
+
+    private void ActiveAbility(bool enable)
     {
-        GravityShhieldEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        endLine.gameObject.SetActive(true);
+        if (enabled == true)
+        {
+            GravityShhieldEffect.Play(true);
+            endLine.gameObject.SetActive(false);
+            DOVirtual.DelayedCall(Duration, () => {
+                GravityShhieldEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                endLine.gameObject.SetActive(true);
+                Physics.gravity = new Vector3(0, -10, 0);
+                gameObject.SetActive(false);
+            });
+           
+        }
+
+        
     }
     private void OnTriggerEnter(Collider t)
     {
@@ -23,7 +37,7 @@ public class GravitySheildAbillity : MonoBehaviour
         if (t.tag == "Body" )
         {
             DOVirtual.DelayedCall(0.05f, () => { Physics.gravity = new Vector3(0, 10, 0); });
-            Debug.Log("Active Shield");
+            //Debug.Log("Active Shield");
         }
     }
     private void OnTriggerExit(Collider t)
@@ -32,7 +46,7 @@ public class GravitySheildAbillity : MonoBehaviour
         if (t.tag == "Body")
         {
             DOVirtual.DelayedCall(1, () => { Physics.gravity = new Vector3(0, -10, 0); });
-            Debug.Log("not Active Shield");
+           // Debug.Log("not Active Shield");
 
         }
     }

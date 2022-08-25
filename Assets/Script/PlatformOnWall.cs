@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class PlatformOnWall : MonoBehaviour
 {
+  
+  
     private Transform cam;
+   
+
+    private Transform parent;
     public void Start()
     {
 
-
+       
         cam = Camera.main.transform;
     
+       
     }
     // Update is called once per frame
     public void LateUpdate()
@@ -20,7 +26,13 @@ public class PlatformOnWall : MonoBehaviour
         {
 
             //Debug.Log("Des" + gameObject.name);
-            Destroy(this.gameObject);
+          
+
+                Destroy(this.gameObject);
+            
+ 
         }
     }
+
+    
 }

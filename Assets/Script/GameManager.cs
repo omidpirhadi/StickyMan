@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public BuildPlatform buildPlatform;
     public Controller controller;
-
+    public RingPower ring;
     public Gun Cannon_Gun;
   //  public Gun M24_Gun;
 
@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Material SkyBox;
     
     public List<GameObject> HumenPrefabs;
+    public GameObject AbillityGravity;
     public ParticleSystem Effect;
 
 
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(buildPlatform.ShiftEnvirment());
             RegenrationWorldInHeight += 1000;
-            Debug.Log("Regenration World");
+         //   Debug.Log("Regenration World");
         }
         AchivmentHeight();
      
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         controller.GameStarted = false;
         Cannon_Gun.automove = false;
-      
+        ring.Reset();
         Camera.transform.position = new Vector3(0, 14f, -10);
         Camera.GetComponent<CameraFollow>().ready = false;
         Camera.GetComponent<CameraFollow>().target = null;
@@ -157,7 +158,7 @@ public class GameManager : MonoBehaviour
 
         controller.GameStarted = true;
         Cannon_Gun.GunReady();
-        
+        ring.Reset();
         Camera.GetComponent<CameraFollow>().ready = true;
     }
    
@@ -200,7 +201,7 @@ public class GameManager : MonoBehaviour
             File.Delete(Application.persistentDataPath + "//" + FileName + ".json");
         }
         File.WriteAllText(Application.persistentDataPath + "//" + FileName + ".json", json_data);
-        Debug.Log("Data Saved");
+       // Debug.Log("Data Saved");
     }
     public LeaderboardData LoadLeaderboard(string FileName)
     {
@@ -211,7 +212,7 @@ public class GameManager : MonoBehaviour
             data = JsonUtility.FromJson<LeaderboardData>(j_data);
 
         }
-        Debug.Log("Data Loaded");
+       // Debug.Log("Data Loaded");
         return data;
     }
     public void DeleteToken(string FileName)

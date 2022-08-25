@@ -107,9 +107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc95fae7bdec7fc4d9b8cb9e10e94a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Capacity: 12
+  Capacity: 5
   gun: {fileID: 0}
   Effect: {fileID: 7313532160617754282}
+  gameHUD_ui: {fileID: 0}
 --- !u!1001 &7312368813938566580
 PrefabInstance:
   m_ObjectHideFlags: 0

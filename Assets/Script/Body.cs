@@ -21,7 +21,7 @@ public class Body : MonoBehaviour
     {
         if (rigidbody.velocity.magnitude > 20.0f)
         {
-            rigidbody.drag = 10;
+            rigidbody.drag = 20;
         }
         else
 
@@ -60,8 +60,8 @@ public class Body : MonoBehaviour
             {
 
                 rigidbody.velocity = current_velocity;
-                rigidbody.AddForce(Vector3.up * 500, ForceMode.Impulse);
-                Debug.Log("Force UP");
+                rigidbody.AddForce(Vector3.up * 400, ForceMode.Impulse);
+               // Debug.Log("Force UP");
             }
         }
     }

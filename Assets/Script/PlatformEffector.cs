@@ -19,7 +19,7 @@ public class PlatformEffector : MonoBehaviour
             }
             else
             {
-                var dir = collision.collider.GetComponent<Body>().Lastvelocity;
+                var dir = collision.collider.GetComponent<Body>().Lastvelocity.normalized;
                 collision.rigidbody.AddForce(-dir * PowerPlatform, ForceMode.Impulse);
                 Debug.Log("Effector Normal Axis");
             }

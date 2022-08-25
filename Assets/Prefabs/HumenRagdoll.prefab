@@ -902,10 +902,8 @@ GameObject:
   - component: {fileID: 4185355284394399571}
   - component: {fileID: 7851307558191762729}
   - component: {fileID: 3557437815435398632}
-  - component: {fileID: 4265164117800303592}
-  - component: {fileID: 1742835142}
   - component: {fileID: 8986358912901633339}
-  - component: {fileID: 8719594726747021855}
+  - component: {fileID: 3135073186634727671}
   m_Layer: 12
   m_Name: HumenRagdoll
   m_TagString: Body
@@ -964,32 +962,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 56
   m_CollisionDetection: 2
---- !u!135 &4265164117800303592
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557437815435398633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.42, z: 0}
---- !u!135 &1742835142
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3557437815435398633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.83
-  m_Center: {x: 0, y: 1.66, z: 0}
 --- !u!114 &8986358912901633339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,8 +975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lastvelocity: {x: 0, y: 0, z: 0}
---- !u!135 &8719594726747021855
-SphereCollider:
+--- !u!136 &3135073186634727671
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1013,9 +985,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 2.92, z: 0}
+  m_Radius: 1.17
+  m_Height: 3.06
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &3646481475713396402
 GameObject:
   m_ObjectHideFlags: 0
