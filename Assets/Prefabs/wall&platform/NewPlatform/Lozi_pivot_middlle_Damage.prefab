@@ -2130,6 +2130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlatformDamageForHume: 1
+  BodyBloodEffect: {fileID: 6854363963195161020, guid: bb07bbeb50b5e084a809320a4dc30ed7,
+    type: 3}
+  Parent: {fileID: 2090195645487241377}
   Health: 0
   renderer: {fileID: 7223051143779667005}
   RayFired_Gameobject: {fileID: 1253960741239811507}
@@ -2138,6 +2142,7 @@ MonoBehaviour:
   - {fileID: 7425230862093259923}
   - {fileID: 2481826290406685276}
   - {fileID: 4300833395537202041}
+  animation: {fileID: 0}
 --- !u!114 &7344333700367887086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10914,7 +10919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119154857183542908}
   m_LocalRotation: {x: -0, y: 1, z: -0.000000021855694, w: 0}
-  m_LocalPosition: {x: 0, y: -1.41, z: 1.86}
+  m_LocalPosition: {x: 0, y: -1.06, z: 1.86}
   m_LocalScale: {x: 4.5, y: 3, z: 44.5194}
   m_Children: []
   m_Father: {fileID: 2090195645487241378}
@@ -10931,9 +10936,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.06
-  m_Height: 0.42
+  m_Height: 0.27
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.07}
 --- !u!1 &9154763589946614191
 GameObject:
   m_ObjectHideFlags: 0
@@ -11282,6 +11287,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage_pack (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11362,6 +11372,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Damage_pack (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
@@ -11444,6 +11459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage_pack
       objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11524,6 +11544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Damage_pack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}

@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     public void CompeletRecord ()
     {
 
-
+   
         // GA_LevelFailEvent(2);
         GameHUD_UI.Show(false);
         EndGameMenu_UI.Show(true);
@@ -91,7 +91,11 @@ public class GameManager : MonoBehaviour
         Camera.transform.position = new Vector3(0, 14f, -10);
         Camera.GetComponent<CameraFollow>().ready = false;
         Camera.GetComponent<CameraFollow>().target = null;
-
+     if (humen_spwaned)
+        {
+            Destroy(humen_spwaned);
+            humen_spwaned = null;
+        }
        // SaveLeaderboard("cannonman", leaderboard);
 
     }

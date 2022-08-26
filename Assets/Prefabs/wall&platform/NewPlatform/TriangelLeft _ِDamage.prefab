@@ -8499,12 +8499,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlatformDamageForHume: 1
+  BodyBloodEffect: {fileID: 6854363963195161020, guid: bb07bbeb50b5e084a809320a4dc30ed7,
+    type: 3}
+  Parent: {fileID: 9092856634383458918}
   Health: 0
   renderer: {fileID: 2282271155075751751}
   RayFired_Gameobject: {fileID: 7488182991985821024}
   Additionl:
   - {fileID: 4631456572844310914}
   - {fileID: 2491163524594985487}
+  animation: {fileID: 0}
 --- !u!114 &555999960308924399
 MonoBehaviour:
   m_ObjectHideFlags: 0

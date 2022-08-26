@@ -3039,7 +3039,7 @@ Transform:
   m_GameObject: {fileID: 3024760215878035544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.03, y: 14.99, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 893975765199050271}
   - {fileID: 7194883555108639768}
@@ -3059,6 +3059,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2c8ad85ff805944b6e3196c78c37e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsMovable: 0
+  MoveLeft: {x: 0, y: 0, z: 0}
+  MoveRight: {x: 0, y: 0, z: 0}
+  loopType: 0
+  ease: 0
 --- !u!1 &3048688961950475124
 GameObject:
   m_ObjectHideFlags: 0
@@ -6060,10 +6065,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlatformDamageForHume: 0
+  BodyBloodEffect: {fileID: 0}
+  Parent: {fileID: 3024760215878035544}
   Health: 0
   renderer: {fileID: 6009971440918273761}
   RayFired_Gameobject: {fileID: 5094527234675046315}
   Additionl: []
+  animation: {fileID: 0}
 --- !u!114 &2625769503249039980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7167,7 +7176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7812959791667209151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11325449, y: -0.92, z: 9.639999}
+  m_LocalPosition: {x: -0.11325449, y: -0.37, z: 9.639999}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3024760215878035545}

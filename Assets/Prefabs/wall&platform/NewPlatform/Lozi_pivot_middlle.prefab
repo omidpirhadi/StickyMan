@@ -2345,9 +2345,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 2090195645487241377}
   Health: 0
   renderer: {fileID: 7223051143779667005}
   RayFired_Gameobject: {fileID: 2021357168027705461}
+  Additionl: []
+  animation: {fileID: 0}
 --- !u!114 &4816656998869383846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2924,7 +2927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843704524441028430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.93, z: 0}
+  m_LocalPosition: {x: 0, y: -1.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2090195645487241378}
@@ -2987,7 +2990,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.74
+  m_Radius: 0.31
   m_Height: 11.27
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

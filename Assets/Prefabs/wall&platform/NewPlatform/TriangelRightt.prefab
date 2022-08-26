@@ -1351,10 +1351,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parent: {fileID: 1100404459976936234}
   Health: 0
   renderer: {fileID: 4511567781254888425}
   RayFired_Gameobject: {fileID: 7959952431164715936}
   Additionl: []
+  animation: {fileID: 0}
 --- !u!114 &3700547418853863209
 MonoBehaviour:
   m_ObjectHideFlags: 0

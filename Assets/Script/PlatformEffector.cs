@@ -10,18 +10,22 @@ public class PlatformEffector : MonoBehaviour
     {
         if (collision.collider.tag == "Body")
         {
+            collision.rigidbody.velocity = Vector3.zero;
             if (!WithNormal)
             {
-               // var dir = collision.collider.GetComponent<Body>().Lastvelocity - collision.contacts[0].point.normalized;
+                // var dir = collision.collider.GetComponent<Body>().Lastvelocity - collision.contacts[0].point.normalized;
                 // var reflect = Vector3.Reflect(dir, collision.contacts[0].normal);
+               
+
                 collision.rigidbody.AddForce(transform.up * PowerPlatform, ForceMode.Impulse);
-                Debug.Log("Effector Y Axis");
+              ///  Debug.Log("Effector Y Axis" + transform.up);
             }
             else
             {
-                var dir = collision.collider.GetComponent<Body>().Lastvelocity.normalized;
-                collision.rigidbody.AddForce(-dir * PowerPlatform, ForceMode.Impulse);
-                Debug.Log("Effector Normal Axis");
+               var dir = collision.collider.GetComponent<Body>().Lastvelocity.normalized;
+                 collision.rigidbody.AddForce(collision.contacts[0].normal * PowerPlatform, ForceMode.Impulse);
+    
+               /// Debug.Log("Effector Normal Axis");
             }
         }
     }

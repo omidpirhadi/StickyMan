@@ -172,7 +172,7 @@ public class BuildPlatform : MonoBehaviour
         for (int i = index; i < platformsSpawned.Count; i++)
         {
 
-            int rand_chance_item = UnityEngine.Random.Range(0, 3); // 0 = ammo_box,  1 = ability 2 = coin_box//
+            int rand_chance_item = UnityEngine.Random.Range(0, 4); // 0 = ammo_box,  1 = ability 2 = coin_box  3 = shieldbox//
             var pos = platformsSpawned[i].transform.position;
             Vector3 pos_item = new Vector3();
             if (rand_chance_item == 0)
@@ -249,6 +249,26 @@ public class BuildPlatform : MonoBehaviour
                 }
 
             } // coin
+            else if(rand_chance_item == 3)/// shieldbbox
+            {
+                if (pos.x > 0)// right
+                {
+
+                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                else if (pos.x < 0) // left
+                {
+                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                else if (pos.x == 0)// middle
+                {
+                    pos_item.x = 0;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                SpwanShieldBox(pos + pos_item);
+            }
             yield return null;
 
             //  Debug.Log("ITEM");
@@ -260,7 +280,13 @@ public class BuildPlatform : MonoBehaviour
     private void SpwanBoxAbility(Vector3 pos)
     {
 
-        Instantiate(Levels[CurrentLevel].Abilitybox, pos, Levels[CurrentLevel].AmmoBox_prefab.transform.rotation, Envirement.transform);
+        Instantiate(Levels[CurrentLevel].Abilitybox, pos, Levels[CurrentLevel].Abilitybox.transform.rotation, Envirement.transform);
+
+    }
+    private void SpwanShieldBox(Vector3 pos)
+    {
+
+        Instantiate(Levels[CurrentLevel].Shieldbox, pos, Levels[CurrentLevel].Shieldbox.transform.rotation, Envirement.transform);
 
     }
     private void SpwanBoxAmmo(Vector3 pos)
@@ -349,9 +375,10 @@ public struct LEVEL
     public GameObject CoinBox_prefab;
 
     [BoxGroup("Items Settings")]
+    public GameObject Shieldbox;
+    [BoxGroup("Items Settings")]
     public GameObject Abilitybox;
-     [BoxGroup("Items Settings")]
-    public int RepeatCoinBox;
+
     [BoxGroup("Items Settings")]
     public float CoinDistanceEachOther;
     [BoxGroup("Items Settings")]

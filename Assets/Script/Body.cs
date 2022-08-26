@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
-    private SettingUI settingUI;
+
+    public FXV.FXVShield fXVShield;
+    public float DurationSheild = 10;
+    public bool IsSheided = false;
     private new Rigidbody rigidbody;
-//    private Gun gun;
+
     private GameManager gameManager;
    public  Vector3 Lastvelocity;
+
     public void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        settingUI = FindObjectOfType<SettingUI>();
-        gameManager = FindObjectOfType<GameManager>(); 
-       settingUI.OnChangeSetting += OnChangeSetting;
-     //   gun = FindObjectOfType<Gun>();
+    
+        gameManager = FindObjectOfType<GameManager>();
+        fXVShield.SetShieldActive(false, false);
+
     }
     public void Update()
     {
@@ -28,6 +32,7 @@ public class Body : MonoBehaviour
         {
             rigidbody.drag = 1;
         }
+       
       //  Debug.Log(rigidbody.velocity);
     }
     public void FixedUpdate()
@@ -38,12 +43,19 @@ public class Body : MonoBehaviour
     {
         //gameManager.BodyCurrentHeight = transform.position.y;
     }
-    private void OnChangeSetting()
-    {
-        rigidbody.mass = settingUI.massbody;
-        rigidbody.drag = settingUI.dragbody;
-    }
+  
+    public void ActiveShield()
 
+    {
+       // Debug.Log("on");
+        fXVShield.SetShieldActive(true,true);
+        IsSheided = true;
+        DG.Tweening.DOVirtual.DelayedCall(10, () => {
+            fXVShield.SetShieldActive(false,true);
+            IsSheided = false;
+           // Debug.Log("off");
+        });
+    }
 
 
 

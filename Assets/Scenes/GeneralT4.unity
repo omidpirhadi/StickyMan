@@ -809,6 +809,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240936052}
   m_CullTransparentMesh: 0
+--- !u!21 &248047145
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Disc Transparent [INNER_RADIUS] (instance)
+  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
+  m_ShaderKeywords: INNER_RADIUS
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 6
+    m_Colors: []
 --- !u!1 &284002743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1276,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319122935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &319122935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2357,6 +2398,10 @@ MonoBehaviour:
         type: 3}
       Scale: {x: 1.5, y: 1.5, z: 30}
       UseInEnvirment: 0
+    - platform_prefab: {fileID: 3909941909503061892, guid: f1044f4b10e2e32418bdbb3601dce28f,
+        type: 3}
+      Scale: {x: -1.4, y: -3.4, z: -1.4}
+      UseInEnvirment: 0
     MedillePlatform:
     - platform_prefab: {fileID: 2090195645487241377, guid: c440cfe96c0122f4bb16dddeb1b471d4,
         type: 3}
@@ -2368,15 +2413,35 @@ MonoBehaviour:
       UseInEnvirment: 0
     - platform_prefab: {fileID: 3024760215878035544, guid: 8e1c4ae4db3f2e84299bd603c8326578,
         type: 3}
-      Scale: {x: 0.5, y: 0.5, z: 0.5}
+      Scale: {x: 1, y: 1, z: 1}
       UseInEnvirment: 0
     - platform_prefab: {fileID: 3024760215878035544, guid: 3ed91ea0a03a4db4a85a01187eb141de,
         type: 3}
-      Scale: {x: 0.5, y: 0.5, z: 0.5}
+      Scale: {x: 1, y: 1, z: 1}
       UseInEnvirment: 0
     - platform_prefab: {fileID: 479035197973088898, guid: b7d6da4b045759c4b8709cc973a3697c,
         type: 3}
       Scale: {x: 0.6, y: 8, z: 0.6}
+      UseInEnvirment: 0
+    - platform_prefab: {fileID: 4566443937571963698, guid: a5db24bafbb901c4ebae58cef128fb75,
+        type: 3}
+      Scale: {x: 1, y: 1, z: 1}
+      UseInEnvirment: 0
+    - platform_prefab: {fileID: 489962659610344697, guid: 91f34ccbf2ee1a544a04b7518b8087bf,
+        type: 3}
+      Scale: {x: 1, y: 1, z: 1}
+      UseInEnvirment: 0
+    - platform_prefab: {fileID: 3068763314680148407, guid: 5570fed32fed97949a24a885274d8296,
+        type: 3}
+      Scale: {x: 7.2, y: 17.2, z: 7.2}
+      UseInEnvirment: 0
+    - platform_prefab: {fileID: 6347830277848223881, guid: ac319df43211b5549ac3acfc50d90d05,
+        type: 3}
+      Scale: {x: 1, y: 1, z: 1}
+      UseInEnvirment: 0
+    - platform_prefab: {fileID: 3024760215878035544, guid: e742dc8b430e7ed4b8f527caa4f0db80,
+        type: 3}
+      Scale: {x: 1, y: 1, z: 1}
       UseInEnvirment: 0
     RightPlatform:
     - platform_prefab: {fileID: 1100404459976936234, guid: 739e66a70cc7bb24d9b21ad176e4c223,
@@ -2387,14 +2452,19 @@ MonoBehaviour:
         type: 3}
       Scale: {x: 1.5, y: 1.5, z: 30}
       UseInEnvirment: 0
+    - platform_prefab: {fileID: 3909941909503061892, guid: c23fd29875f3b004ba7445b91babc152,
+        type: 3}
+      Scale: {x: -1.4, y: -3.4, z: -1.4}
+      UseInEnvirment: 0
     DistanceItemFromPlatform: {x: 1, y: 2, z: 0}
     AmmoBox_prefab: {fileID: 7378916383288482894, guid: 0450fe8413138484088a7a9ae36b4761,
       type: 3}
     CoinBox_prefab: {fileID: 7378916383288482894, guid: a1e6749dc979e8f41a81008e3356b6c2,
       type: 3}
+    Shieldbox: {fileID: 7378916383288482894, guid: ca8c4ac890e462e46b7920fe448fec47,
+      type: 3}
     Abilitybox: {fileID: 7378916383288482894, guid: 81decac8256cf3b41a1346144b74b163,
       type: 3}
-    RepeatCoinBox: 0
     CoinDistanceEachOther: 2.5
     EndLine_prefab: {fileID: 4084316662932306480, guid: 93e9e4f8b615856469823ab9f9eb684c,
       type: 3}
@@ -8761,7 +8831,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1525650870}
+  - {fileID: 248047145}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14174,6 +14244,36 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!21 &1417422220
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Line 3D Transparent [CAP_ROUND] (instance)
+  m_Shader: {fileID: 4800000, guid: 79601a6344eda2d4b91e6b821c7b0b88, type: 3}
+  m_ShaderKeywords: CAP_ROUND
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _StencilComp: 8
+    - _StencilID: 0
+    - _StencilOp: 0
+    - _StencilOpPass: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZOffsetFactor: 0
+    - _ZOffsetUnits: 0
+    - _ZTest: 6
+    m_Colors: []
 --- !u!1 &1439331551
 GameObject:
   m_ObjectHideFlags: 0
@@ -14414,36 +14514,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491603083}
   m_CullTransparentMesh: 0
---- !u!21 &1525650870
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Disc Transparent [INNER_RADIUS] (instance)
-  m_Shader: {fileID: 4800000, guid: 0736a017ee88a8741b09e7382339ab99, type: 3}
-  m_ShaderKeywords: INNER_RADIUS
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 6
-    m_Colors: []
 --- !u!1 &1539918335
 GameObject:
   m_ObjectHideFlags: 0
@@ -14981,36 +15051,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689661567}
   m_CullTransparentMesh: 0
---- !u!21 &1719740501
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Line 3D Transparent [CAP_ROUND] (instance)
-  m_Shader: {fileID: 4800000, guid: 79601a6344eda2d4b91e6b821c7b0b88, type: 3}
-  m_ShaderKeywords: CAP_ROUND
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Floats:
-    - _StencilComp: 8
-    - _StencilID: 0
-    - _StencilOp: 0
-    - _StencilOpPass: 0
-    - _StencilReadMask: 255
-    - _StencilWriteMask: 255
-    - _ZOffsetFactor: 0
-    - _ZOffsetUnits: 0
-    - _ZTest: 6
-    m_Colors: []
 --- !u!1 &1722580225
 GameObject:
   m_ObjectHideFlags: 0
@@ -15091,7 +15131,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1719740501}
+  - {fileID: 1417422220}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -5,11 +5,17 @@ using UnityEngine;
 
 public class PlatformHealth : MonoBehaviour
 {
+    public bool PlatformDamageForHume = false;
+    public GameObject BodyBloodEffect;
+    public GameObject Parent;
     public float Health = 100;
+
     public new  MeshRenderer renderer;
    
     public GameObject RayFired_Gameobject;
     public List<GameObject> Additionl = new List<GameObject>();
+    public new Animation animation;
+        
     private void Start()
     {
        
@@ -25,6 +31,8 @@ public class PlatformHealth : MonoBehaviour
             }
             else
             {
+                if (animation)
+                    animation.Stop();
                 GetComponent<Collider>().enabled = false;
                 renderer.enabled = false;
                 Additionl.ForEach(e => {
@@ -32,10 +40,28 @@ public class PlatformHealth : MonoBehaviour
                 });
                 RayFired_Gameobject.SetActive(true);
                 
-                Destroy(this, 5);
+                Destroy(Parent, 5);
                 Debug.Log("PlatformCracked!");
             }
 
+        }
+        if (collision.collider.tag == "Body" &&  PlatformDamageForHume == true)
+        {
+            if (!collision.gameObject.GetComponent<Body>().IsSheided)
+            {
+                collision.rigidbody.isKinematic = true;
+                var e = Instantiate(BodyBloodEffect, collision.contacts[0].point, Quaternion.identity);
+
+                DG.Tweening.DOVirtual.DelayedCall(0.5f, () =>
+                {
+                    Destroy(e);
+                    FindObjectOfType<GameManager>().CompeletRecord();
+
+
+                });
+
+                Debug.Log("boddy dead");
+            }
         }
     }
 }

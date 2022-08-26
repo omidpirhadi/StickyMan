@@ -3044,12 +3044,12 @@ Transform:
   m_GameObject: {fileID: 3024760215878035544}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.03, y: 14.99, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4592367700736343417}
-  - {fileID: 8066478582069893395}
   - {fileID: 893975765199050271}
   - {fileID: 7194883555108639768}
+  - {fileID: 4592367700736343417}
+  - {fileID: 8066478582069893395}
   - {fileID: 1284531325717639097}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3066,6 +3066,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2c8ad85ff805944b6e3196c78c37e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsMovable: 0
+  MoveLeft: {x: 0, y: 0, z: 0}
+  MoveRight: {x: 0, y: 0, z: 0}
+  loopType: 0
+  ease: 0
 --- !u!1 &3069011710307654087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6894,7 +6899,7 @@ Transform:
   m_LocalScale: {x: 0.840735, y: 37.355537, z: 0.840735}
   m_Children: []
   m_Father: {fileID: 3024760215878035545}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4482968781279390699
 MeshFilter:
@@ -6969,12 +6974,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e63bc80cf4051498fbce3ec42f43ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlatformDamageForHume: 1
+  BodyBloodEffect: {fileID: 6854363963195161020, guid: bb07bbeb50b5e084a809320a4dc30ed7,
+    type: 3}
+  Parent: {fileID: 3024760215878035544}
   Health: 0
   renderer: {fileID: 6009971440918273761}
   RayFired_Gameobject: {fileID: 3879990311513107613}
   Additionl:
   - {fileID: 5765632785498520561}
   - {fileID: 20576154909106075}
+  animation: {fileID: 0}
 --- !u!114 &5064794763908271071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9108,11 +9118,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7812959791667209151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.11325449, y: -0.18, z: 9.639999}
+  m_LocalPosition: {x: -0.11325449, y: -0.85, z: 8.43}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3024760215878035545}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &2578429797505156576
 CapsuleCollider:
@@ -9124,7 +9134,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.23
+  m_Radius: 0.11
   m_Height: 7.64
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
@@ -10032,6 +10042,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage_pack
       objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10070,7 +10085,7 @@ PrefabInstance:
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
@@ -10113,6 +10128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Damage_pack (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 760901074139473603, guid: afb0fdf3e99e4b247802bc3a540a1124,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10151,7 +10171,7 @@ PrefabInstance:
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3854241864385643553, guid: afb0fdf3e99e4b247802bc3a540a1124,
         type: 3}
