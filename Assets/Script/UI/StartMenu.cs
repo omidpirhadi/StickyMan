@@ -23,9 +23,12 @@ namespace Diaco.Cannonman.UI
         private void OnEnable()
         {
             gameManager = FindObjectOfType<GameManager>();
+            StartGame_btn.interactable = true;
+            ExitApp_btn.interactable = true;
             StartGame_btn.onClick.AddListener(() => {
 
                 StartCoroutine(gameManager.LevelSpwan());
+                StartGame_btn.interactable = false;
             });
             ExitApp_btn.onClick.AddListener(() => {
                 Application.Quit();

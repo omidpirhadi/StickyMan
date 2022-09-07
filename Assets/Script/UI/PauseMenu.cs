@@ -28,8 +28,10 @@ namespace Diaco.Cannonman.UI
         }
         private void OnEnable()
         {
-            GameHUD_UI.Show(false);
             Time.timeScale = 0;
+            GameHUD_UI.Show(false);
+            Play_btn.interactable = true;
+            HomeApp_btn.interactable = true;
 
             if (gameManager == null)
                 gameManager = FindObjectOfType<GameManager>();
@@ -44,6 +46,7 @@ namespace Diaco.Cannonman.UI
                 GameHUD_UI.Show(true);
                 FindObjectOfType<Controller>().GameStarted = true;
                 Show(false);
+                Play_btn.interactable = false;
 
             });
             HomeApp_btn.onClick.AddListener(() =>
@@ -52,6 +55,7 @@ namespace Diaco.Cannonman.UI
                 StartMenu_UI.Show(true);
                 Show(false);
                 gameManager.OnUI = true;
+                HomeApp_btn.interactable = false;
             });
       
         }

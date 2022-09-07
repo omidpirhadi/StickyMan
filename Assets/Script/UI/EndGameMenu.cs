@@ -30,19 +30,25 @@ namespace Diaco.Cannonman.UI
             gameManager = FindObjectOfType<GameManager>();
 
             var socer_current_record = gameManager.CalculateScore();
-
+            PlayAgine_btn.interactable = true;
+            PlayAds_btn.interactable = true;
+            HomeApp_btn.interactable = true;
 
             PlayAgine_btn.onClick.AddListener(() => {
 
                 StartCoroutine(gameManager.LevelSpwan());
+                PlayAgine_btn.interactable = false;
             });
             PlayAds_btn.onClick.AddListener(() => {
                 StartMenu_UI.Show(true);
+                PlayAds_btn.interactable = false;
             });
             HomeApp_btn.onClick.AddListener(() => {
 
                 StartMenu_UI.Show(true);
                 Show(false);
+                HomeApp_btn.interactable = false;
+
             });
 
             Score_txt.DOText(socer_current_record.ToString(), SpeedAnimationText, true, ScrambleMode.Numerals);

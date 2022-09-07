@@ -99,47 +99,59 @@ public class BuildPlatform : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             int rand_pos = UnityEngine.Random.Range(0, 3);
-
+            platform_spawned = null;
             pos_platform = new Vector3(0.0f, (padding_down) + (1000 * platformShit), 0.0f);
             //  Debug.Log("Y:" + pos_platform.y);
             pos_platform.y = Mathf.Clamp(pos_platform.y + (temp_platform_distance_y), (padding_down) + (1000 * platformShit), (h - padding_up) + (1000 * platformShit));
             // Debug.Log("Y2:" + pos_platform.y);
             if (pos_platform.y <= (h - padding_up) + (1000 * platformShit))
             {
-                if (rand_pos == 0)
+                if (rand_pos == 0)// left
                 {
                     pos_platform = new Vector3((distance_x - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
 
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
 
                     var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
+                    var heightspawn = Levels[CurrentLevel].LeftPlatform[rand_platform].FromThisHeightSpawn;
+                    if (pos_platform.y > heightspawn)
+                    {
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
+                    }
                 }
-                else if (rand_pos == 1)
+                else if (rand_pos == 1)//mddle
                 {
                     pos_platform = new Vector3(0, pos_platform.y, 0.0f);
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
 
                     var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
+                    var heightspawn = Levels[CurrentLevel].MedillePlatform[rand_platform].FromThisHeightSpawn;
+                    if (pos_platform.y > heightspawn)
+                    {
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
+                    }
                 }
-                else if (rand_pos == 2)
+                else if (rand_pos == 2)//right
                 {
                     pos_platform = new Vector3((distance_x - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
                     int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
 
                     var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
-                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                    platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
+                    var heightspawn = Levels[CurrentLevel].RightPlatform[rand_platform].FromThisHeightSpawn;
+                    if (pos_platform.y > heightspawn)
+                    {
+                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                        platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
+                    }
                 }
 
 
                 temp_platform_distance_y += distance_y;
             }
-
-            platformsSpawned.Add(platform_spawned);
+            if (platform_spawned)
+                platformsSpawned.Add(platform_spawned);
             ///Debug.Log("jjjjjjjjjjjjj" + i);
 
         }
@@ -147,7 +159,7 @@ public class BuildPlatform : MonoBehaviour
         // lastPlatform_index = platformsSpawned.Count - 1;
         // Debug.Log("plast" + (platformsSpawned.Count - 1));
 
-        yield break;
+        yield return null;
     }
 
 
@@ -395,6 +407,7 @@ public struct Platform
     public GameObject platform_prefab;
     public Vector3 Scale;
     public bool UseInEnvirment;
+    public float FromThisHeightSpawn;
 }
 
 
