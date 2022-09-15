@@ -211,24 +211,28 @@ public class BuildPlatform : MonoBehaviour
             {
                 rand_chance_item = UnityEngine.Random.Range(0, 2); 
             }
-            else if (pos.y > 1000)
+            else if (pos.y > 1000 && pos.y < 1500)
             {
                 rand_chance_item = UnityEngine.Random.Range(0, 4); 
             }
+
+
             Vector3 pos_item = new Vector3();
+
+
             if (rand_chance_item == 0)
             {
 
                 if (pos.x > 0)// right
                 {
                     /// left spawn
-                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
                     /// right spawn
-                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
@@ -302,13 +306,13 @@ public class BuildPlatform : MonoBehaviour
                 if (pos.x > 0)// right
                 {
                     /// left spawn
-                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
                     /// right spawn
-                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
@@ -335,13 +339,13 @@ public class BuildPlatform : MonoBehaviour
                 if (pos.x > 0)// right
                 {
                     /// left spawn
-                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
                     /// right spawn
-                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
