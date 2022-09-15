@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -110,41 +111,53 @@ public class BuildPlatform : MonoBehaviour
                 {
                     pos_platform = new Vector3((distance_x - Levels[CurrentLevel].Offset_X) * -1, pos_platform.y, 0.0f);
 
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].LeftPlatform.Count);
+                    var platfromFilterwithHeight = Levels[CurrentLevel].LeftPlatform.Where(p => p.FromThisHeightSpawn < pos_platform.y).ToList();
 
-                    var platform = Levels[CurrentLevel].LeftPlatform[rand_platform].platform_prefab;
-                    var heightspawn = Levels[CurrentLevel].LeftPlatform[rand_platform].FromThisHeightSpawn;
-                    if (pos_platform.y > heightspawn)
-                    {
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].LeftPlatform[rand_platform].Scale;
-                    }
+
+                    int rand_platform = UnityEngine.Random.Range(0, platfromFilterwithHeight.Count);
+
+                    var platform = platfromFilterwithHeight[rand_platform].platform_prefab;
+
+
+
+
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = platfromFilterwithHeight[rand_platform].Scale;
+
                 }
                 else if (rand_pos == 1)//mddle
                 {
                     pos_platform = new Vector3(0, pos_platform.y, 0.0f);
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].MedillePlatform.Count);
+                    
 
-                    var platform = Levels[CurrentLevel].MedillePlatform[rand_platform].platform_prefab;
-                    var heightspawn = Levels[CurrentLevel].MedillePlatform[rand_platform].FromThisHeightSpawn;
-                    if (pos_platform.y > heightspawn)
-                    {
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].MedillePlatform[rand_platform].Scale;
-                    }
+                    var platfromFilterwithHeight = Levels[CurrentLevel].MedillePlatform.Where(p => p.FromThisHeightSpawn < pos_platform.y).ToList();
+
+
+                    int rand_platform = UnityEngine.Random.Range(0, platfromFilterwithHeight.Count);
+
+                    var platform = platfromFilterwithHeight[rand_platform].platform_prefab;
+
+
+
+
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = platfromFilterwithHeight[rand_platform].Scale;
                 }
                 else if (rand_pos == 2)//right
                 {
                     pos_platform = new Vector3((distance_x - Levels[CurrentLevel].Offset_X) * 1, pos_platform.y, 0.0f);
-                    int rand_platform = UnityEngine.Random.Range(0, Levels[CurrentLevel].RightPlatform.Count);
+                    var platfromFilterwithHeight = Levels[CurrentLevel].RightPlatform.Where(p => p.FromThisHeightSpawn < pos_platform.y).ToList();
 
-                    var platform = Levels[CurrentLevel].RightPlatform[rand_platform].platform_prefab;
-                    var heightspawn = Levels[CurrentLevel].RightPlatform[rand_platform].FromThisHeightSpawn;
-                    if (pos_platform.y > heightspawn)
-                    {
-                        platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
-                        platform_spawned.transform.localScale = Levels[CurrentLevel].RightPlatform[rand_platform].Scale;
-                    }
+
+                    int rand_platform = UnityEngine.Random.Range(0, platfromFilterwithHeight.Count);
+
+                    var platform = platfromFilterwithHeight[rand_platform].platform_prefab;
+
+
+
+
+                    platform_spawned = Instantiate(platform, pos_platform, platform.gameObject.transform.rotation, Envirement.transform);
+                    platform_spawned.transform.localScale = platfromFilterwithHeight[rand_platform].Scale;
                 }
 
 
@@ -184,72 +197,94 @@ public class BuildPlatform : MonoBehaviour
         for (int i = index; i < platformsSpawned.Count; i++)
         {
 
-            int rand_chance_item = UnityEngine.Random.Range(0, 4); // 0 = ammo_box,  1 = ability 2 = coin_box  3 = shieldbox//
+
             var pos = platformsSpawned[i].transform.position;
+
+            // 0 = ammo_box,,,,  1 = coin_box,,,, 2 = ability,,,,  3 = shieldbox//
+            int rand_chance_item = 0;
+
+            if (pos.y > 0 && pos.y < 300)
+            {
+                rand_chance_item = 1;
+            }
+            else if (pos.y > 300 && pos.y < 1000)
+            {
+                rand_chance_item = UnityEngine.Random.Range(0, 2); 
+            }
+            else if (pos.y > 1000)
+            {
+                rand_chance_item = UnityEngine.Random.Range(0, 4); 
+            }
             Vector3 pos_item = new Vector3();
             if (rand_chance_item == 0)
             {
 
                 if (pos.x > 0)// right
                 {
-
-                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// left spawn
+                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
-                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// right spawn
+                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
                 {
-                    pos_item.x = 0;
-                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    if (rand == 0)
+
+                    {
+                        pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+                    else
+                    {
+                        pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+
                 }
-                SpwanBoxAmmo(pos + pos_item);
+                pos_item.y = pos.y + 2;
+                SpwanBoxAmmo(pos_item);
             }/// ammo
+
             else if (rand_chance_item == 1)
-            {
-
-                if (pos.x > 0)// right
-                {
-
-                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
-                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
-                }
-                else if (pos.x < 0) // left
-                {
-                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
-                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
-                }
-                else if (pos.x == 0)// middle
-                {
-                    pos_item.x = 0;
-                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
-                }
-                SpwanBoxAbility(pos + pos_item);
-            }/// ability
-            else if (rand_chance_item == 2)
             {
                 var coin_count = (Levels[CurrentLevel].DistancePlatformEachOther - 10) / Levels[CurrentLevel].CoinDistanceEachOther;
 
                 pos_item = pos;
                 if (pos.x > 0)// right
                 {
-
-                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// left spawn
+                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
-                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// right spawn
+                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
                 {
-                    pos_item.x = 0;
-                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    if (rand == 0)
+
+                    {
+                        pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+                    else
+                    {
+                        pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+
                 }
+
                 offset_y = pos_item.y;
 
                 for (int j = 0; j < coin_count; j++)
@@ -261,26 +296,73 @@ public class BuildPlatform : MonoBehaviour
                 }
 
             } // coin
-            else if(rand_chance_item == 3)/// shieldbbox
+            else if (rand_chance_item == 2)
             {
+
                 if (pos.x > 0)// right
                 {
-
-                    pos_item.x -= Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// left spawn
+                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x < 0) // left
                 {
-                    pos_item.x += Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    /// right spawn
+                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
                 else if (pos.x == 0)// middle
                 {
-                    pos_item.x = 0;
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    if (rand == 0)
+
+                    {
+                        pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+                    else
+                    {
+                        pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+
+                }
+                pos_item.y = pos.y + 2;
+                SpwanBoxAbility(pos_item);
+            }/// ability
+            else if (rand_chance_item == 3)/// shieldbbox
+            {
+                if (pos.x > 0)// right
+                {
+                    /// left spawn
+                    pos_item.x = -pos_item.x - Levels[CurrentLevel].DistanceItemFromPlatform.x;
                     pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
                 }
-                SpwanShieldBox(pos + pos_item);
-            }
+                else if (pos.x < 0) // left
+                {
+                    /// right spawn
+                    pos_item.x = -pos_item.x + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                    pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                }
+                else if (pos.x == 0)// middle
+                {
+                    int rand = UnityEngine.Random.Range(0, 2);
+                    if (rand == 0)
+
+                    {
+                        pos_item.x = 5 + Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+                    else
+                    {
+                        pos_item.x = -5 - Levels[CurrentLevel].DistanceItemFromPlatform.x;
+                        pos_item.y += Levels[CurrentLevel].DistanceItemFromPlatform.y;
+                    }
+
+                }
+                pos_item.y = pos.y + 2;
+                SpwanShieldBox(pos_item);
+            }//shieldbox
             yield return null;
 
             //  Debug.Log("ITEM");
