@@ -6,7 +6,7 @@ public class Body : MonoBehaviour
 {
 
     public FXV.FXVShield fXVShield;
-    public float DurationSheild = 10;
+    public float DurationSheild = 20;
     public bool IsSheided = false;
     private new Rigidbody rigidbody;
 

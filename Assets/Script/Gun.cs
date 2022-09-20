@@ -142,7 +142,7 @@ public class Gun : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         dir = -1;
         AutoMovePlay();
-        Ammo(20);
+        Ammo(30);
         firstShot = true;
        // IsGunReady = true;
     }
