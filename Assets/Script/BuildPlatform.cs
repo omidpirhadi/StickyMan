@@ -211,7 +211,7 @@ public class BuildPlatform : MonoBehaviour
             {
                 rand_chance_item = UnityEngine.Random.Range(0, 2); 
             }
-            else if (pos.y > 1000 && pos.y < 1500)
+            else if (pos.y > 1000 )
             {
                 rand_chance_item = UnityEngine.Random.Range(0, 4); 
             }
